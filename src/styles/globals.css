@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+html, body { height: 100%; }
+:root { --header-h: 64px; }
+
+/* Base typographie minimale */
+body { font-synthesis-weight: none; text-rendering: optimizeLegibility; }
+
