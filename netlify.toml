@@ -1,6 +1,18 @@
 [build]
   command = "npm run build"
-  publish = "."
+  publish = ".next"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Configuration Netlify Forms
+[[plugins.inputs]]
+  # Activer la compatibilité pour les formulaires Netlify avec Next.js 15
+  # (évite l'erreur "migration steps to support Netlify Forms")
+  enableMatcher = true
+
+# Redirections propres (utile si tu utilises le router App Directory de Next.js)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
