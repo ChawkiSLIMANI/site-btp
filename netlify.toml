@@ -4,8 +4,6 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-    [plugins.inputs]
-    enableMatcher = true
 
 [[redirects]]
   from = "/*"
