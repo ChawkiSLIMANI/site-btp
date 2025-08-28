@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const links = [
   { href: '/', label: 'Accueil' },
@@ -11,16 +11,18 @@ const links = [
   { href: '/realisations', label: 'Réalisations' },
   { href: '/a-propos', label: 'À propos' },
   { href: '/contact', label: 'Contact' },
-]
+];
 
 export function Header() {
-  const pathname = usePathname()
-  const [open, setOpen] = useState(false)
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [open])
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-200">
@@ -35,12 +37,20 @@ export function Header() {
             <Link
               key={l.href}
               href={l.href}
-              className={`transition-colors hover:text-cyan-700 ${pathname === l.href ? 'text-cyan-700 font-semibold' : 'text-gray-700'}`}
+              className={`transition-colors hover:text-cyan-700 ${
+                pathname === l.href ? 'text-cyan-700 font-semibold' : 'text-gray-700'
+              }`}
             >
               {l.label}
             </Link>
           ))}
-          <Link href="/contact" className="rounded-2xl bg-cyan-700 px-4 py-2 text-white font-medium hover:bg-cyan-800">Devis</Link>
+          {/* CTA vers /devis */}
+          <Link
+            href="/devis"
+            className="rounded-2xl bg-cyan-700 px-4 py-2 text-white font-medium hover:bg-cyan-800"
+          >
+            Devis
+          </Link>
         </nav>
 
         {/* Burger */}
@@ -71,13 +81,16 @@ export function Header() {
                 {l.label}
               </Link>
             ))}
-            <Link href="/contact" className="mt-2 inline-flex rounded-2xl bg-cyan-700 px-4 py-2 text-white font-medium" onClick={() => setOpen(false)}>
+            <Link
+              href="/devis"
+              className="mt-2 inline-flex rounded-2xl bg-cyan-700 px-4 py-2 text-white font-medium"
+              onClick={() => setOpen(false)}
+            >
               Demander un devis
             </Link>
           </div>
         </div>
       )}
     </header>
-  )
+  );
 }
-
