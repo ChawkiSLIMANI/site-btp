@@ -44,13 +44,6 @@ export function Header() {
               {l.label}
             </Link>
           ))}
-          {/* CTA vers /devis */}
-          <Link
-            href="/devis"
-            className="rounded-2xl bg-cyan-700 px-4 py-2 text-white font-medium hover:bg-cyan-800"
-          >
-            Devis
-          </Link>
         </nav>
 
         {/* Burger */}

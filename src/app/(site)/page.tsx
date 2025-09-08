@@ -18,7 +18,6 @@ return (
 <h1 className="text-3xl md:text-5xl font-semibold leading-tight max-w-3xl">Construire durablement, rénover avec exigence.</h1>
 <p className="mt-4 text-white/90 md:text-lg max-w-2xl">Gros œuvre, rénovation et second œuvre pour particuliers et professionnels. Devis sous 48h.</p>
 <div className="mt-8 flex flex-wrap gap-3">
-<a href="/devis" className="inline-flex items-center rounded-2xl bg-cyan-700 px-5 py-3 font-medium text-white hover:bg-cyan-800">Demander un devis</a>
 <a href="/services" className="inline-flex items-center rounded-2xl border border-white/30 px-5 py-3 font-medium text-white hover:bg-white/10">Nos services</a>
 </div>
 </Container>
