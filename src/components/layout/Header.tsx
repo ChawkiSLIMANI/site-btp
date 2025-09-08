@@ -74,13 +74,13 @@ export function Header() {
                 {l.label}
               </Link>
             ))}
-            <Link
+            {/* <Link
               href="/devis"
               className="mt-2 inline-flex rounded-2xl bg-cyan-700 px-4 py-2 text-white font-medium"
               onClick={() => setOpen(false)}
             >
               Demander un devis
-            </Link>
+            </Link> */}
           </div>
         </div>
       )}

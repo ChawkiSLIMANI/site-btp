@@ -24,12 +24,12 @@ export function ContactCta() {
             ✉️ {SITE.email}
           </a>
         </div>
-        <Link
+        {/* <Link
           href="/contact"
           className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-3 rounded-2xl shadow-md"
         >
           Demander un devis
-        </Link>
+        </Link> */}
       </Container>
     </section>
   );
