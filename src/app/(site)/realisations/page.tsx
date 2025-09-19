@@ -1,106 +1,72 @@
 "use client";
 
-import { useState } from "react";
 import { REALISATIONS } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
-import { Lightbox } from "@/components/realisations/Lightbox";
+import { MiniCarousel } from "@/components/realisations/MiniCarousel";
 
 export default function RealisationsPage() {
-  const [typeFilter, setTypeFilter] = useState("");
-  const [cityFilter, setCityFilter] = useState("");
-  const [yearFilter, setYearFilter] = useState("");
-
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const types = Array.from(new Set(REALISATIONS.map(r => r.type)));
-  const cities = Array.from(new Set(REALISATIONS.map(r => r.city)));
-  const years = Array.from(new Set(REALISATIONS.map(r => r.year))).sort((a, b) => b - a);
-
-  const filteredRealisations = REALISATIONS.filter(r => {
-    return (
-      (typeFilter ? r.type === typeFilter : true) &&
-      (cityFilter ? r.city === cityFilter : true) &&
-      (yearFilter ? r.year === Number(yearFilter) : true)
-    );
-  });
-
-  const openLightbox = (images: string[], index: number) => {
-    setLightboxImages(images);
-    setCurrentIndex(index);
-    setLightboxOpen(true);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + lightboxImages.length) % lightboxImages.length);
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % lightboxImages.length);
-  };
-
   return (
     <section className="py-16">
       <Container>
-        <h1 className="text-4xl font-bold mb-6">Nos réalisations</h1>
+        <header className="mb-8">
+          <h1 className="text-4xl font-bold">Nos réalisations</h1>
+          <p className="mt-2 text-gray-600">
+            Une sélection de chantiers livrés en construction et rénovation.
+          </p>
+        </header>
 
-        {/* Filtres */}
-        <div className="flex flex-wrap gap-4 mb-8">
-          <select value={typeFilter} onChange={e => setTypeFilter(e.target.value)} className="border p-2 rounded">
-            <option value="">Type</option>
-            {types.map(type => <option key={type} value={type}>{type}</option>)}
-          </select>
-          <select value={cityFilter} onChange={e => setCityFilter(e.target.value)} className="border p-2 rounded">
-            <option value="">Ville</option>
-            {cities.map(city => <option key={city} value={city}>{city}</option>)}
-          </select>
-          <select value={yearFilter} onChange={e => setYearFilter(e.target.value)} className="border p-2 rounded">
-            <option value="">Année</option>
-            {years.map(year => <option key={year} value={year}>{year}</option>)}
-          </select>
-        </div>
-
-        {/* Grille des réalisations */}
-        {filteredRealisations.length > 0 ? (
+        {REALISATIONS.length > 0 ? (
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredRealisations.map((realisation, idx) => (
-              <div
-                key={realisation.slug}
-                className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer"
-                onClick={() => openLightbox(realisation.gallery, 0)}
-              >
-                <img
-                  src={realisation.cover}
-                  alt={realisation.title}
-                  className="w-full h-56 object-cover"
-                />
-                <div className="p-6">
-                  <h2 className="text-xl font-semibold mb-1">{realisation.title}</h2>
-                  <p className="text-sm text-gray-500 mb-3">
-                    {realisation.city} — {realisation.year}
-                  </p>
-                  {realisation.excerpt && (
-                    <p className="text-gray-600 text-sm">{realisation.excerpt}</p>
-                  )}
-                </div>
-              </div>
-            ))}
+            {REALISATIONS.map((realisation) => {
+              const images =
+                realisation.gallery?.length
+                  ? realisation.gallery
+                  : realisation.cover
+                  ? [realisation.cover]
+                  : [];
+
+              return (
+                <article
+                  key={realisation.slug}
+                  className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition"
+                >
+                  {/* Mini carrousel sur la vignette */}
+                  <MiniCarousel images={images} alt={realisation.title} />
+
+                  <div className="p-6">
+                    <h2 className="text-xl font-semibold mb-1">{realisation.title}</h2>
+
+                    {/* Meta (type / ville / année) si présents */}
+                    <div className="flex flex-wrap gap-2 text-xs text-gray-600 mb-3">
+                      {realisation.type && (
+                        <span className="inline-flex items-center rounded-full border px-2 py-1">
+                          {realisation.type}
+                        </span>
+                      )}
+                      {realisation.city && (
+                        <span className="inline-flex items-center rounded-full border px-2 py-1">
+                          {realisation.city}
+                        </span>
+                      )}
+                      {realisation.year && (
+                        <span className="inline-flex items-center rounded-full border px-2 py-1">
+                          {realisation.year}
+                        </span>
+                      )}
+                    </div>
+
+                    {realisation.excerpt && (
+                      <p className="text-gray-700 text-sm">{realisation.excerpt}</p>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
           </div>
         ) : (
-          <p>Aucune réalisation ne correspond à vos filtres.</p>
+          <p>Aucune réalisation pour le moment.</p>
         )}
       </Container>
-
-      {lightboxOpen && (
-        <Lightbox
-          images={lightboxImages}
-          currentIndex={currentIndex}
-          onClose={() => setLightboxOpen(false)}
-          onPrev={handlePrev}
-          onNext={handleNext}
-        />
-      )}
     </section>
   );
 }

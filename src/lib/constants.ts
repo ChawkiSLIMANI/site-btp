@@ -1,18 +1,25 @@
+// src/lib/constants.ts (extraits pertinents)
 import type { Service, Realisation, Testimonial, SiteSettings } from "@/lib/types";
 
 export const SITE: SiteSettings = {
-  name: "Entreprise BTP",
-  baseline: "Votre partenaire de confiance pour vos projets de construction et rénovation",
+  name: "AKSO Construction",
+  baseline:
+    "Construction & rénovation tous corps d’état — pilotage rigoureux, transparence et qualité durable",
   phone: "+33 1 23 45 67 89",
-  email: "contact@entreprise-btp.fr",
-  address: "12 Rue des Travaux, 75000 Paris, France",
+  email: "contact@akso-construction.fr",
+  address: "Paris 6e — Île-de-France",
   hours: "Lun–Ven : 8h–18h",
   areas: ["Paris", "Hauts-de-Seine", "Seine-Saint-Denis", "Val-de-Marne"],
   socials: [
-    { label: "Facebook", url: "https://facebook.com" },
-    { label: "LinkedIn", url: "https://linkedin.com" }
+    { label: "LinkedIn", url: "https://linkedin.com/company/akso" },   // TODO
+    { label: "Instagram", url: "https://instagram.com/akso" },          // TODO
+    { label: "Facebook", url: "https://facebook.com/akso" }             // TODO
   ]
 };
+
+// SERVICES/REALISATIONS/TESTIMONIALS : tu peux garder tels quels.
+// On n’affichera que Construction + Rénovation en Home.
+
 
 export const SERVICES: Service[] = [
   {

@@ -32,3 +32,18 @@ export type SiteSettings = {
   areas: string[];
   socials?: { label: string; url: string }[];
 };
+
+
+
+export type Reference = {
+  slug: string;
+  title: string;
+  city?: string;
+  year?: number;
+  moa?: string;   // Maîtrise d’Ouvrage
+  moe?: string;   // Maîtrise d’Œuvre
+  eg?: string;    // Entreprise Générale / contexte
+  amount?: string; // Montant / budget
+  duration?: string;
+  excerpt?: string;
+};

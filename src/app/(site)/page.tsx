@@ -1,8 +1,6 @@
 import { HeroCarousel } from '@/components/home/HeroCarousel'
 import { ServicesTeaser } from '@/components/home/ServicesTeaser'
-import { RefsTeaser } from '@/components/home/RefsTeaser'
 import { ProjectsGallery } from '@/components/home/ProjectsGallery'
-import { ContactCta } from '@/components/home/ContactCta'
 
 export default function HomePage() {
   return (
@@ -22,11 +20,8 @@ export default function HomePage() {
           </div>
         </Container>
       </section> */}
-
       <ServicesTeaser />
-      <RefsTeaser />
       <ProjectsGallery />
-      <ContactCta />
     </>
   )
 }
