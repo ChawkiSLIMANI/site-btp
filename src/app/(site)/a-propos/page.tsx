@@ -11,12 +11,6 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const badges = [
-    { src: "/images/assurances/SMABTP.png", alt: "Assurance SMA BTP" },
-    { src: "/images/assurances/FFBIDF.png", alt: "Fédération Française du Bâtiment Île-de-France" },
-    { src: "/images/assurances/CMAP.png", alt: "Chambre des Métiers et de l’Artisanat — Paris" },
-    { src: "/images/assurances/CQCMA.png", alt: "Certification CQ CMA" },
-  ];
 
   return (
     <main className="container mx-auto px-4 md:px-6 py-12 md:py-16">

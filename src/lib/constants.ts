@@ -7,6 +7,9 @@ import { gallery } from "@/lib/galleries";
 const rangeFiles = (prefix: string, start: number, end: number, ext = ".png") =>
   Array.from({ length: end - start + 1 }, (_, i) => `${prefix}_${i + start}${ext}`);
 
+export const HERO_LEAD = "/images/placeholders/Carroussel_1.png";
+
+
 export const SITE: SiteSettings = {
   name: "AKSO Construction",
   baseline:

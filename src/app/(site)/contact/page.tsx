@@ -10,7 +10,7 @@ export default function ContactPage() {
   className="text-4xl md:text-5xl leading-tight"
   style={{ fontFamily: "var(--font-elegant)" }}
 >
-  LA PROMESSE D'UN PROJET RÉUSSI
+  LA PROMESSE D&rsquo;UN PROJET RÉUSSI
 </h1>
 
         </section>
@@ -63,7 +63,7 @@ export default function ContactPage() {
               <div>
                 <label className="inline-flex items-center text-sm">
                   <input type="checkbox" required className="mr-2" />
-                  J’accepte que mes données soient utilisées pour me recontacter.
+                  J&rsquo;accepte que mes données soient utilisées pour me recontacter.
                 </label>
               </div>
 
@@ -76,7 +76,7 @@ export default function ContactPage() {
           {/* ===== Colonne droite : RAPPEL TÉL + MAIL + RÉSEAUX ===== */}
           <aside className="md:col-span-1 md:sticky md:top-24">
             <div className="rounded-2xl border p-5 bg-white">
-              <h3 className="text-lg font-semibold mb-4">Besoin d’un échange direct ?</h3>
+              <h2 className="text-xl font-semibold mb-4">Besoin d&rsquo;un échange direct ?</h2>
 
               <div className="space-y-3">
                 <a href={`tel:${SITE.phone}`} className="block w-full text-left rounded-xl border px-4 py-3 hover:shadow-sm transition">
