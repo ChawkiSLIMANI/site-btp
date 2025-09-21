@@ -30,44 +30,33 @@ export const SITE: SiteSettings = {
 // On n’affichera que Construction + Rénovation en Home.
 
 
+// src/lib/constants.ts (extrait SERVICES uniquement)
 export const SERVICES: Service[] = [
   {
-    slug: "construction-maison",
-    title: "Construction de maisons",
-    description:
-      "Nous réalisons des maisons sur mesure, adaptées à vos besoins et à votre budget, avec des matériaux de qualité et un suivi rigoureux.",
-    bullets: [
-      "Plans personnalisés",
-      "Matériaux écologiques",
-      "Respect des délais"
-    ],
-    image: "/images/realisations/NETTER_DEBERGUE_6.png"
-  },
-  {
     slug: "renovation-interieure",
-    title: "Rénovation intérieure",
+    title: "Rénovation / Réhabilitation",
     description:
-      "Transformez vos espaces avec nos prestations complètes en rénovation intérieure : cuisine, salle de bain, sols et peintures.",
+      "Nous donnons une nouvelle vie aux bâtiments existants. Notre équipe accompagne vos projets de rénovation, de restructuration et de modernisation en alliant respect du patrimoine, performance énergétique et confort. L’objectif : transformer sans dénaturer, valoriser l’existant et répondre aux normes actuelles tout en optimisant vos espaces.",
     bullets: [
       "Aménagement sur mesure",
       "Finitions soignées",
-      "Optimisation des espaces"
+      "Optimisation des espaces",
     ],
-    image: "/images/placeholders/REHABILITATION.jpg"
+    image: "/images/placeholders/REHABILITATION.jpg", // ton image de réhabilitation
   },
   {
-    slug: "amenagement-exterieur",
-    title: "Aménagement extérieur",
+    slug: "construction-maison",
+    title: "Construction neuve",
     description:
-      "Création de terrasses, jardins et allées pour embellir et valoriser votre extérieur.",
+      "En tant qu’entreprise générale, nous prenons en charge l’exécution complète de vos chantiers neufs. Nous assurons la coordination des différents corps d’état, le respect des délais et la qualité d’exécution, dans le strict suivi des plans de conception établis. Notre priorité : livrer un ouvrage conforme, durable et parfaitement maîtrisé.",
     bullets: [
-      "Terrasses bois ou carrelage",
-      "Allées et murets",
-      "Aménagement paysager"
+      "Respect des délais",
+      "Qualité d’exécution",
     ],
-    image: "/images/placeholders/service-exterieur.png"
-  }
+    image: "/images/placeholders/service-maison.png",
+  },
 ];
+
 
 
 export const REALISATIONS: Realisation[] = [

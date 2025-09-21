@@ -8,7 +8,7 @@ export default function RealisationsPage() {
     <main className="py-12 md:py-16">
       <Container>
         <header className="mb-8 md:mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold">Nos réalisations</h1>
+          <h1 className="text-4xl md:text-5xl font-bold">Réalisations personnelles</h1>
           <p className="mt-2 text-gray-600 max-w-3xl">
             Sélection de chantiers en construction et rénovation. Détails (MOA/MOE, montants, durées) disponibles sur chaque fiche.
           </p>

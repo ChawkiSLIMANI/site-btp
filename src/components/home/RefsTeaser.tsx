@@ -8,7 +8,7 @@ export function RefsTeaser() {
     <section className="py-16">
       <Container>
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold">Nos réalisations</h2>
+          <h2 className="text-3xl font-bold">Réalisations personnelles</h2>
           <Link
             href="/realisations"
             className="text-cyan-700 font-medium hover:underline"
