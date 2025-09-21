@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { Bodoni_Moda } from "next/font/google";
 
 export const metadata: Metadata = {
-  title: "Entreprise BTP — Construction & Rénovation",
-  description: "Votre partenaire de confiance pour vos travaux.",
+  title: "AKSO — Entreprise de construction",
+  description: "Entreprise générale : construction neuve, rénovation, réhabilitation.",
 };
 
 const bodoni = Bodoni_Moda({
