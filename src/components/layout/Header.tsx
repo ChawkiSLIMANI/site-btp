@@ -17,26 +17,31 @@ const NAV: NavItem[] = [
 ];
 
 export function Header() {
-  const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const isHome = pathname === "/";
+  const [open, setOpen] = useState(false);
 
   // Fermer le menu au changement de route
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  useEffect(() => setOpen(false), [pathname]);
 
   // Empêcher le scroll du body quand le menu est ouvert (mobile)
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-      return () => {
-        document.body.style.overflow = "";
-      };
-    }
+    if (!open) return;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  // Home: overlay transparent; Pages internes: sticky blanc
+  const headerClass = isHome
+    ? "absolute inset-x-0 top-0 z-50 bg-transparent"
+    : "sticky top-0 z-50 bg-white/90 backdrop-blur border-b";
+
+  const linkBase = "text-sm font-medium transition-colors";
+  const linkColor = isHome ? "text-white hover:text-white/80" : "text-gray-700 hover:text-cyan-700";
+  const linkActive = isHome ? "text-white" : "text-cyan-700";
+
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
+    <header className={headerClass}>
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3" aria-label="AKSO Construction - Accueil">
@@ -45,7 +50,7 @@ export function Header() {
               src="/images/placeholders/logoak.jpg"
               alt="AKSO Construction"
               fill
-              className="object-contain"
+              className={`object-contain ${isHome ? "invert" : ""}`}
               priority
             />
           </div>
@@ -59,9 +64,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-medium hover:text-cyan-700 ${
-                  active ? "text-cyan-700" : "text-gray-700"
-                }`}
+                className={`${linkBase} ${active ? linkActive : linkColor}`}
               >
                 {item.label}
               </Link>
@@ -76,38 +79,25 @@ export function Header() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-gray-300"
+          className={`md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border ${
+            isHome ? "border-white/70 text-white" : "border-gray-300 text-gray-900"
+          }`}
         >
           <span className="sr-only">Menu</span>
-          {/* Icône burger simple (3 barres) */}
           <div className="relative w-5 h-5">
-            <span
-              className={`absolute left-0 right-0 h-0.5 bg-gray-900 transition-transform ${
-                open ? "top-2.5 rotate-45" : "top-1"
-              }`}
-            />
-            <span
-              className={`absolute left-0 right-0 h-0.5 bg-gray-900 transition-opacity top-2.5 ${
-                open ? "opacity-0" : "opacity-100"
-              }`}
-            />
-            <span
-              className={`absolute left-0 right-0 h-0.5 bg-gray-900 transition-transform ${
-                open ? "top-2.5 -rotate-45" : "top-4"
-              }`}
-            />
+            <span className={`absolute left-0 right-0 h-0.5 bg-current transition-transform ${open ? "top-2.5 rotate-45" : "top-1"}`} />
+            <span className={`absolute left-0 right-0 h-0.5 bg-current transition-opacity top-2.5 ${open ? "opacity-0" : "opacity-100"}`} />
+            <span className={`absolute left-0 right-0 h-0.5 bg-current transition-transform ${open ? "top-2.5 -rotate-45" : "top-4"}`} />
           </div>
         </button>
       </div>
 
-      {/* Menu mobile (drawer simple) */}
+      {/* Menu mobile */}
       <div
         id="mobile-menu"
-        className={`md:hidden overflow-hidden transition-[max-height] duration-300 border-t ${
-          open ? "max-h-96" : "max-h-0"
-        }`}
+        className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${open ? "max-h-96" : "max-h-0"}`}
       >
-        <nav className="px-4 py-3 flex flex-col gap-2 bg-white">
+        <nav className={`px-4 py-3 flex flex-col gap-2 ${isHome ? "bg-black/60 text-white" : "bg-white"}`}>
           {NAV.map((item) => {
             const active = pathname === item.href;
             return (
@@ -115,7 +105,13 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 className={`block rounded-lg px-3 py-2 text-base ${
-                  active ? "text-cyan-700 bg-cyan-50" : "text-gray-800 hover:bg-gray-50"
+                  active
+                    ? isHome
+                      ? "bg-white/10"
+                      : "text-cyan-700 bg-cyan-50"
+                    : isHome
+                    ? "hover:bg-white/10"
+                    : "text-gray-800 hover:bg-gray-50"
                 }`}
               >
                 {item.label}
@@ -128,4 +124,5 @@ export function Header() {
   );
 }
 
+// ✅ double export pour éviter les erreurs d'import
 export default Header;

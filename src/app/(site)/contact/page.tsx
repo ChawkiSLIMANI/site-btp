@@ -1,15 +1,23 @@
 // src/app/(site)/contact/page.tsx
 import { SITE } from "@/lib/constants";
+import Image from "next/image"; // (pas obligatoire ici, laissé si besoin d'icônes plus tard)
 
 export default function ContactPage() {
   return (
-    <section className="py-16">
+    <main className="py-16">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-6">Contactez-nous</h1>
+        {/* Bandeau titre (maquette client) */}
+        <section className="mb-10 rounded-2xl border px-6 py-10 text-center">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight uppercase">
+            La promesse d’un projet réussi
+          </h1>
+        </section>
 
         <div className="grid gap-10 md:grid-cols-3">
           {/* ===== Colonne gauche : FORMULAIRE (Netlify) ===== */}
           <div className="md:col-span-2 max-w-2xl">
+            <h2 className="text-2xl font-semibold mb-4">Contactez-nous</h2>
+
             <form
               name="contact"
               method="POST"
@@ -18,6 +26,7 @@ export default function ContactPage() {
               action="/merci"
               className="space-y-4"
             >
+              {/* Champs Netlify */}
               <input type="hidden" name="form-name" value="contact" />
               <p className="hidden">
                 <label>
@@ -27,37 +36,67 @@ export default function ContactPage() {
 
               <div>
                 <label className="block mb-1">Nom *</label>
-                <input type="text" name="name" required className="w-full border p-2 rounded" />
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  autoComplete="name"
+                  className="w-full border rounded px-3 py-2"
+                />
               </div>
 
               <div>
                 <label className="block mb-1">Email *</label>
-                <input type="email" name="email" required className="w-full border p-2 rounded" />
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  autoComplete="email"
+                  className="w-full border rounded px-3 py-2"
+                />
               </div>
 
               <div>
                 <label className="block mb-1">Téléphone</label>
-                <input type="tel" name="phone" className="w-full border p-2 rounded" />
+                <input
+                  type="tel"
+                  name="phone"
+                  autoComplete="tel"
+                  className="w-full border rounded px-3 py-2"
+                />
               </div>
 
               <div>
                 <label className="block mb-1">Sujet *</label>
-                <input type="text" name="subject" required className="w-full border p-2 rounded" />
+                <input
+                  type="text"
+                  name="subject"
+                  required
+                  className="w-full border rounded px-3 py-2"
+                />
               </div>
 
               <div>
                 <label className="block mb-1">Message *</label>
-                <textarea name="message" required className="w-full border p-2 rounded" rows={4} />
+                <textarea
+                  name="message"
+                  required
+                  rows={5}
+                  className="w-full border rounded px-3 py-2"
+                />
               </div>
 
               <div>
-                <label className="inline-flex items-center">
+                <label className="inline-flex items-center text-sm">
                   <input type="checkbox" required className="mr-2" />
                   J’accepte que mes données soient utilisées pour me recontacter.
                 </label>
               </div>
 
-              <button type="submit" className="bg-cyan-700 text-white px-6 py-2 rounded">
+              <button
+                type="submit"
+                className="bg-cyan-700 text-white px-6 py-2 rounded"
+              >
                 Envoyer
               </button>
             </form>
@@ -66,7 +105,9 @@ export default function ContactPage() {
           {/* ===== Colonne droite : RAPPEL TÉL + MAIL + RÉSEAUX ===== */}
           <aside className="md:col-span-1 md:sticky md:top-24">
             <div className="rounded-2xl border p-5 bg-white">
-              <h2 className="text-xl font-semibold mb-4">Besoin d’un échange direct ?</h2>
+              <h3 className="text-lg font-semibold mb-4">
+                Besoin d’un échange direct ?
+              </h3>
 
               <div className="space-y-3">
                 <a
@@ -93,16 +134,15 @@ export default function ContactPage() {
           </aside>
         </div>
       </div>
-    </section>
+    </main>
   );
 }
 
-/* ===== Bloc réseaux sociaux (sous le rappel tel/mail) ===== */
+/* ===== Bloc réseaux sociaux (icônes ronds comme le footer) ===== */
 function SocialLinks() {
   const socials = SITE.socials ?? [];
   if (!socials.length) return null;
 
-  // mêmes icônes que le footer
   const ICONS: Record<string, string> = {
     LinkedIn:
       "M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1c.6-1.1 2-2.2 4.1-2.2 4.4 0 5.2 2.9 5.2 6.6V24h-5v-7.7c0-1.8 0-4-2.4-4s-2.8 1.9-2.8 3.9V24h-5V8z",
@@ -114,7 +154,7 @@ function SocialLinks() {
 
   return (
     <div>
-      <h3 className="font-semibold">Retrouvez-nous aussi sur les réseaux :</h3>
+      <h4 className="font-semibold">Retrouvez-nous aussi sur les réseaux :</h4>
       <div className="mt-3 flex items-center gap-3">
         {socials.map((s) => (
           <a
@@ -136,4 +176,3 @@ function SocialLinks() {
     </div>
   );
 }
-

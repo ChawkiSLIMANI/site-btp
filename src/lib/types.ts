@@ -5,17 +5,27 @@ export type Service = {
   bullets: string[];
   image: string;
 };
+
 export type Realisation = {
   slug: string;
   title: string;
-  type: string;
+  type: "Construction" | "Rénovation";
   city: string;
   year: number;
-  surface?: string;
   cover: string;
   gallery: string[];
   excerpt?: string;
+  meta?: {
+    address?: string;
+    moa?: string;        // Maître d'ouvrage
+    moe?: string;        // Maître d'œuvre / Architecte
+    bet?: string;        // BET / Économiste
+    eg?: string;         // Entreprise générale / rôle
+    amount?: string;     // Montant (texte pour garder le format)
+    duration?: string;   // Durée des travaux
+  };
 };
+
 export type Testimonial = {
   name: string;
   quote: string;

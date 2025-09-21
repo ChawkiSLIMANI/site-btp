@@ -1,5 +1,6 @@
 // src/lib/constants.ts (extraits pertinents)
 import type { Service, Realisation, Testimonial, SiteSettings } from "@/lib/types";
+import { gallery } from "@/lib/galleries";
 
 export const SITE: SiteSettings = {
   name: "AKSO Construction",
@@ -62,29 +63,137 @@ export const SERVICES: Service[] = [
 
 export const REALISATIONS: Realisation[] = [
   {
-    slug: "maison-paris-2024",
-    title: "Maison contemporaine à Paris",
-    type: "Construction",
-    city: "Paris",
-    year: 2024,
-    surface: "150 m²",
-    cover: "/images/placeholders/realisation1.png",
-    gallery: [
-      "/images/placeholders/realisation1.png",
-      "/images/placeholders/realisation1b.png"
-    ],
-    excerpt: "Construction d'une maison contemporaine alliant confort et performance énergétique."
+    slug: "halle-sports-collette-besson-villejuif",
+    title: "Gymnase « Halle des Sports Collette Besson »",
+    type: "Rénovation",
+    city: "Villejuif (94)",
+    year: 2021,
+    cover: gallery("HALLE_DES_SPORTS_COLLETTE_BESSON", 3)[0],
+    gallery: gallery("HALLE_DES_SPORTS_COLLETTE_BESSON", 3),
+    excerpt: "Transformation d’une coque brute en gymnase complet.",
+    meta: {
+      moa: "Ville de Villejuif",
+      moe: "TOUGERON Architecte",
+      bet: "EPDC",
+      eg: "Demathieu Bard",
+      amount: "5,9 M€ TCE",
+      duration: "12 mois",
+    },
   },
   {
-    slug: "renovation-cuisine-versailles",
-    title: "Rénovation d'une cuisine à Versailles",
-    type: "Rénovation",
-    city: "Versailles",
+    slug: "hello-villejuif-159-logements",
+    title: "Programme « HELLO VILLEJUIF » — 159 logements",
+    type: "Construction",
+    city: "Villejuif (94)",
+    year: 2020,
+    cover: gallery("HELLO_VILLEJUIF", 3)[0],
+    gallery: gallery("HELLO_VILLEJUIF", 3),
+    excerpt: "Construction neuve de 159 logements en accession.",
+    meta: {
+      moa: "DB Immobilier",
+      moe: "TOUGERON Architecte",
+      eg: "Demathieu Bard",
+      amount: "20,6 M€ TCE",
+      duration: "25 mois",
+    },
+  },
+  {
+    slug: "netter-debergue-91-logements-creche",
+    title: "Programme « NETTER DEBERGUE » — 91 logements + crèche",
+    type: "Construction",
+    city: "Paris 12e (75)",
     year: 2023,
-    cover: "/images/placeholders/realisation2.png",
-    gallery: ["/images/placeholders/realisation2.png"],
-    excerpt: "Cuisine moderne et fonctionnelle, optimisée pour la lumière et l'espace."
-  }
+    cover: gallery("NETTER_DEBERGUE", 6)[0],
+    gallery: gallery("NETTER_DEBERGUE", 6),
+    excerpt:
+      "5 bâtiments en béton préfabriqué : 91 logements, crèche 99 berceaux, voirie nouvelle, ovoïde.",
+    meta: {
+      moa: "RATP Habitat",
+      moe: "R Architecture",
+      bet: "OTIS / OREGON — Structure : CSI",
+      eg: "Demathieu Bard",
+      amount: "25 M€ TCE",
+      duration: "25 mois",
+    },
+  },
+  {
+    slug: "beaurepaire-pantin-17-logements",
+    title: "Programme « BEAUREPAIRE » — 17 logements + 2 commerces + crèche",
+    type: "Construction",
+    city: "Pantin (93)",
+    year: 2025,
+    cover: gallery("BEAUREPAIRE", 3)[0],
+    gallery: gallery("BEAUREPAIRE", 3),
+    excerpt:
+      "Immeuble R+5, 17 logements (dont 2 duplex), crèche au RDC, parking en sous-sol avec ascenseur voiture.",
+    meta: {
+      address: "1 rue Beaurepaire, 93500 Pantin",
+      moa: "INEADOMO",
+      moe: "Maud Caubet — MOE EXE : Cabinet J2",
+      eg: "PRESTIBAT",
+      amount: "5 M€ TCE",
+      duration: "14 mois",
+    },
+  },
+  {
+    slug: "centre-culturel-coreen",
+    title: "Centre Culturel Coréen",
+    type: "Rénovation",
+    city: "Paris 8e (75)",
+    year: 2024,
+    cover: gallery("Centre_Culturel_Coréen", 3)[0],
+    gallery: gallery("Centre_Culturel_Coréen", 3),
+    excerpt:
+      "Réhabilitation d’un hôtel particulier : bureaux, espaces d’expo, salle de théâtre.",
+    meta: {
+      address: "20 rue de la Boétie, 75008 Paris",
+      moa: "Centre Culturel Coréen",
+      moe: "STUDIOS Architecture",
+      bet: "ELITHIS",
+      eg: "PRESTIBAT",
+      amount: "8 M€",
+      duration: "8 mois",
+    },
+  },
+  {
+    // 🔥 PÉRIGNY-SUR-YERRES (Microplast) — ajouté
+    slug: "microplast-extension-usine",
+    title: "MICROPLAST — Extension d’usine (fondations & reprises)",
+    type: "Construction",
+    city: "Périgny-sur-Yerres (94)",
+    year: 2024,
+    cover: gallery("PERIGNY-SUR-YERRES", 3)[0],
+    gallery: gallery("PERIGNY-SUR-YERRES", 3),
+    excerpt:
+      "Fondations, reprises en sous-œuvre, dallage pour l’extension (≈ 3 500 m²).",
+    meta: {
+      moa: "MICROPLAST",
+      moe: "CUBA Architecture (EXE)",
+      eg: "PRESTIBAT",
+      amount: "1 M€ — Gros Œuvre",
+      duration: "3 mois",
+    },
+  },
+  {
+    slug: "idf-materiaux-showroom-bureaux",
+    title:
+      "Île-de-France Matériaux — Showroom 650 m² + Plateaux de bureaux 890 m²",
+    type: "Construction",
+    city: "Argenteuil (95)",
+    year: 2025,
+    cover: gallery("ILE_DE_France_Matériaux", 4)[0],
+    gallery: gallery("ILE_DE_France_Matériaux", 4),
+    excerpt:
+      "Immeuble R+3 + 1 sous-sol : showroom (RDC & R-1), plateaux de bureaux à partir du R+1.",
+    meta: {
+      moa: "SCI NS",
+      moe: "Aurélie Cartier",
+      bet: "BEGT (Structure)",
+      eg: "PRESTIBAT",
+      amount: "7 M€",
+      duration: "18 mois",
+    },
+  },
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
