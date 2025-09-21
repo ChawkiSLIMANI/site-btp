@@ -14,14 +14,14 @@ export const SITE: SiteSettings = {
   name: "AKSO Construction",
   baseline:
     "Construction & rénovation tous corps d’état — pilotage rigoureux, transparence et qualité durable",
-  phone: "+33 1 23 45 67 89",
-  email: "contact@akso-construction.fr",
+  phone: "+33 6 86 22 75 66",
+  email: "j.aksou@akso-construction.fr",
   address: "Paris 6e — Île-de-France",
   hours: "Lun–Ven : 8h–18h",
   areas: ["Paris", "Hauts-de-Seine", "Seine-Saint-Denis", "Val-de-Marne"],
   socials: [
     { label: "LinkedIn", url: "https://linkedin.com/company/akso" },   // TODO
-    { label: "Instagram", url: "https://instagram.com/akso" },          // TODO
+    { label: "Instagram", url: "https://www.instagram.com/akso_construction/" },          // DONE
     { label: "Facebook", url: "https://facebook.com/akso" }             // TODO
   ]
 };
