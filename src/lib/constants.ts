@@ -38,7 +38,7 @@ export const SERVICES: Service[] = [
       "Matériaux écologiques",
       "Respect des délais"
     ],
-    image: "/images/placeholders/service-maison.png"
+    image: "/images/realisations/NETTER_DEBERGUE_6.png"
   },
   {
     slug: "renovation-interieure",
@@ -50,7 +50,7 @@ export const SERVICES: Service[] = [
       "Finitions soignées",
       "Optimisation des espaces"
     ],
-    image: "/images/placeholders/service-renovation.png"
+    image: "/images/placeholders/REHABILITATION.jpg"
   },
   {
     slug: "amenagement-exterieur",
