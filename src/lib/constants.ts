@@ -53,7 +53,7 @@ export const SERVICES: Service[] = [
       "Respect des délais",
       "Qualité d’exécution",
     ],
-    image: "/images/placeholders/service-maison.png",
+    image: "/images/realisations/NETTER_DEBERGUE_6.png",
   },
 ];
 
