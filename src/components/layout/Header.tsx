@@ -10,9 +10,9 @@ type NavItem = { href: string; label: string };
 
 const NAV: NavItem[] = [
   { href: "/", label: "Accueil" },
+  { href: "/a-propos", label: "À propos" },
   { href: "/services", label: "Services" },
   { href: "/realisations", label: "Réalisations" },
-  { href: "/a-propos", label: "À propos" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -47,7 +47,7 @@ export function Header() {
         <Link href="/" className="flex items-center gap-3" aria-label="AKSO Construction - Accueil">
           <div className="relative h-8 w-32 md:w-40">
             <Image
-              src="/images/placeholders/logoak.jpg"
+              src="/images/placeholders/logoak.png"
               alt="AKSO Construction"
               fill
               className={`object-contain ${isHome ? "invert" : ""}`}
