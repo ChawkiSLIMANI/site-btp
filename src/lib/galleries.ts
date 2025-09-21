@@ -1,6 +1,13 @@
-// Génère: /images/realisations/<prefix>_1.png ... _N.png
-export function gallery(prefix: string, count: number) {
-  return Array.from({ length: count }, (_, i) =>
-    `/images/realisations/${prefix}_${i + 1}.png`
-  );
+// Génère une liste de chemins depuis /public/images/realisations
+export function gallery(
+  name: string,
+  countOrIndices: number | number[],
+  ext = ".png",
+  base = "/images/realisations"
+): string[] {
+  const indices = Array.isArray(countOrIndices)
+    ? countOrIndices
+    : Array.from({ length: countOrIndices }, (_, i) => i + 1);
+
+  return indices.map((i) => `${base}/${name}_${i}${ext}`);
 }

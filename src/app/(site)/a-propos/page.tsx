@@ -1,4 +1,3 @@
-// src/app/(site)/a-propos/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -21,10 +20,10 @@ export default function AboutPage() {
 
   return (
     <main className="container mx-auto px-4 md:px-6 py-12 md:py-16">
-      {/* ===== Titre & texte client ===== */}
+      {/* ===== Titre & texte client (justifié) ===== */}
       <header className="max-w-3xl">
         <h1 className="text-4xl md:text-5xl font-bold">À propos d’AKSO</h1>
-        <div className="mt-3 space-y-4 text-gray-700">
+        <div className="mt-3 space-y-4 text-gray-700 text-justify">
           <p>
             Après 10 années d&apos;expérience dans la conduite de travaux et responsable d’opérations,
             nous mettons à profit une solide expertise technique pour piloter des projets de construction neuf,
@@ -40,10 +39,10 @@ export default function AboutPage() {
         </div>
       </header>
 
-      {/* ===== Notre approche ===== */}
+      {/* ===== Notre approche (justifié) ===== */}
       <section className="mt-8 max-w-3xl">
         <h2 className="text-2xl font-semibold">Notre approche</h2>
-        <div className="mt-2 space-y-4 text-gray-700">
+        <div className="mt-2 space-y-4 text-gray-700 text-justify">
           <p>
             Chez AKSO, chaque chantier est bien plus qu’un simple projet : c’est une mission unique que nous abordons
             avec rigueur et attention. Chaque projet est suivi par un interlocuteur dédié, qui devient votre point de
@@ -57,7 +56,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ===== Assurances & adhésions (logos + légendes) — sans encadrement ===== */}
+      {/* ===== Assurances & adhésions (sans encadrement) ===== */}
       <section className="mt-12">
         <h2 className="text-2xl font-semibold">Assurances & adhésions</h2>
 
@@ -107,7 +106,7 @@ export default function AboutPage() {
         </p>
       </section>
 
-      {/* ===== Message + CTA contact — sans encadrement ===== */}
+      {/* ===== Message + CTA contact (sans encadrement) ===== */}
       <section className="mt-14 text-center">
         <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
           <span className="uppercase">Envie de partager un projet avec nous</span> ?

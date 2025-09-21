@@ -1,6 +1,11 @@
 // src/lib/constants.ts (extraits pertinents)
 import type { Service, Realisation, Testimonial, SiteSettings } from "@/lib/types";
+// ⬇️ importe avec un alias pour éviter tout conflit de nom local
 import { gallery } from "@/lib/galleries";
+
+
+const rangeFiles = (prefix: string, start: number, end: number, ext = ".png") =>
+  Array.from({ length: end - start + 1 }, (_, i) => `${prefix}_${i + start}${ext}`);
 
 export const SITE: SiteSettings = {
   name: "AKSO Construction",
@@ -61,6 +66,7 @@ export const SERVICES: Service[] = [
   }
 ];
 
+
 export const REALISATIONS: Realisation[] = [
   {
     slug: "halle-sports-collette-besson-villejuif",
@@ -97,25 +103,27 @@ export const REALISATIONS: Realisation[] = [
       duration: "25 mois",
     },
   },
-  {
-    slug: "netter-debergue-91-logements-creche",
-    title: "Programme « NETTER DEBERGUE » — 91 logements + crèche",
-    type: "Construction",
-    city: "Paris 12e (75)",
-    year: 2023,
-    cover: gallery("NETTER_DEBERGUE", 6)[0],
-    gallery: gallery("NETTER_DEBERGUE", 6),
-    excerpt:
-      "5 bâtiments en béton préfabriqué : 91 logements, crèche 99 berceaux, voirie nouvelle, ovoïde.",
-    meta: {
-      moa: "RATP Habitat",
-      moe: "R Architecture",
-      bet: "OTIS / OREGON — Structure : CSI",
-      eg: "Demathieu Bard",
-      amount: "25 M€ TCE",
-      duration: "25 mois",
-    },
+{
+  slug: "netter-debergue-91-logements-creche",
+  title: "Programme « NETTER DEBERGUE » — 91 logements + crèche",
+  type: "Construction",
+  city: "Paris 12e (75)",
+  year: 2023,
+  cover: gallery("NETTER_DEBERGUE", 10)[0],     // 1 → 10
+  gallery: gallery("NETTER_DEBERGUE", 10),
+  excerpt:
+    "5 bâtiments en béton préfabriqué : 91 logements, crèche 99 berceaux, voirie nouvelle, ovoïde.",
+  meta: {
+    moa: "RATP Habitat",
+    moe: "R Architecture",
+    bet: "OTIS / OREGON — Structure : CSI",
+    eg: "Demathieu Bard",
+    amount: "25 M€ TCE",
+    duration: "25 mois",
   },
+},
+
+
   {
     slug: "beaurepaire-pantin-17-logements",
     title: "Programme « BEAUREPAIRE » — 17 logements + 2 commerces + crèche",

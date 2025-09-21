@@ -1,4 +1,3 @@
-// src/components/layout/Header.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -21,17 +20,14 @@ export function Header() {
   const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
 
-  // Fermer le menu au changement de route
   useEffect(() => setOpen(false), [pathname]);
 
-  // Empêcher le scroll du body quand le menu est ouvert (mobile)
   useEffect(() => {
     if (!open) return;
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  // Home: overlay transparent; Pages internes: sticky blanc
   const headerClass = isHome
     ? "absolute inset-x-0 top-0 z-50 bg-transparent"
     : "sticky top-0 z-50 bg-white/90 backdrop-blur border-b";
@@ -42,14 +38,16 @@ export function Header() {
 
   return (
     <header className={headerClass}>
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        {/* Logo */}
+      {/* padding réduit à gauche pour coller un peu plus le logo au bord */}
+      <div className="container mx-auto pl-2 pr-4 sm:px-4 h-16 flex items-center justify-between">
+        {/* Logo plus grand */}
         <Link href="/" className="flex items-center gap-3" aria-label="AKSO Construction - Accueil">
-          <div className="relative h-8 w-32 md:w-40">
+          <div className="relative h-12 md:h-14 w-48 md:w-64">
             <Image
               src="/images/placeholders/logoak.png"
               alt="AKSO Construction"
               fill
+              sizes="(min-width: 768px) 256px, 192px"
               className={`object-contain ${isHome ? "invert" : ""}`}
               priority
             />
@@ -124,5 +122,4 @@ export function Header() {
   );
 }
 
-// ✅ double export pour éviter les erreurs d'import
 export default Header;
