@@ -36,7 +36,7 @@ export function ServicesTeaser() {
                 key={service.slug}
                 className="grid grid-cols-1 md:grid-cols-2 gap-6 rounded-2xl shadow-sm border p-4 md:p-6 bg-white"
               >
-                {/* Image (à droite pour le 1er, à gauche pour le 2nd) */}
+                {/* Image(à droite pour le 1er, à gauche pour le 2nd) */}
                 <div
                   className={`relative aspect-[4/3] overflow-hidden rounded-2xl ${
                     imageOnRight ? "md:order-2" : "md:order-1"
