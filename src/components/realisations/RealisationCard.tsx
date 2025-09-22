@@ -71,7 +71,7 @@ export default function RealisationCard({ r }: { r: Realisation }) {
               {r.meta?.moa && (<><dt className="text-gray-500">Maître d’ouvrage</dt><dd>{r.meta.moa}</dd></>)}
               {r.meta?.moe && (<><dt className="text-gray-500">Maître d’œuvre</dt><dd>{r.meta.moe}</dd></>)}
               {r.meta?.bet && (<><dt className="text-gray-500">BET / Économiste</dt><dd>{r.meta.bet}</dd></>)}
-              {r.meta?.eg && (<><dt className="text-gray-500">Entreprise</dt><dd>{r.meta.eg}</dd></>)}
+              {/* {r.meta?.eg && (<><dt className="text-gray-500">Entreprise</dt><dd>{r.meta.eg}</dd></>)} */}
               {r.meta?.amount && (<><dt className="text-gray-500">Montant</dt><dd>{r.meta.amount}</dd></>)}
               {r.meta?.duration && (<><dt className="text-gray-500">Durée</dt><dd>{r.meta.duration}</dd></>)}
             </dl>

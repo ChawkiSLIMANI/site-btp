@@ -16,7 +16,7 @@ export const SITE: SiteSettings = {
     "Construction & rénovation tous corps d’état — pilotage rigoureux, transparence et qualité durable",
   phone: "+33 6 86 22 75 66",
   email: "j.aksou@akso-construction.fr",
-  address: "Paris 6e — Île-de-France",
+  address: "25 rue de l’Abbé Grégoire 75006",
   hours: "Lun–Ven : 8h–18h",
   areas: ["Paris", "Hauts-de-Seine", "Seine-Saint-Denis", "Val-de-Marne"],
   socials: [
