@@ -41,18 +41,18 @@ export function Header() {
       {/* padding réduit à gauche pour coller un peu plus le logo au bord */}
       <div className="container mx-auto pl-2 pr-4 sm:px-4 h-16 flex items-center justify-between">
         {/* Logo plus grand */}
-        <Link href="/" className="flex items-center gap-3" aria-label="AKSO Construction - Accueil">
-          <div className="relative h-12 md:h-14 w-48 md:w-64">
-            <Image
-              src="/images/placeholders/logoak.png"
-              alt="AKSO Construction"
-              fill
-              sizes="(min-width: 768px) 256px, 192px"
-              className={`object-contain ${isHome ? "invert" : ""}`}
-              priority
-            />
-          </div>
-        </Link>
+  <Link href="/" className="flex items-center gap-3" aria-label="AKSO Construction - Accueil">
+    <div className="relative h-12 md:h-14 w-48 md:w-64 translate-y-[8px] md:translate-y-[10px]">
+      <Image
+        src="/images/placeholders/logoak.png"
+        alt="AKSO Construction"
+        fill
+        sizes="(min-width: 768px) 256px, 192px"
+        className={`object-contain ${isHome ? "invert" : ""}`}
+        priority
+      />
+    </div>
+  </Link>
 
         {/* Nav desktop */}
         <nav className="hidden md:flex items-center gap-8">
