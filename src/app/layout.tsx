@@ -17,8 +17,8 @@ const bodoni = Bodoni_Moda({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${bodoni.variable} overflow-x-hidden`}>
-      <body className="flex flex-col min-h-screen bg-white text-gray-800 antialiased overflow-x-hidden">
+    <html lang="fr" className={bodoni.variable}>
+      <body className="flex flex-col min-h-screen bg-white text-gray-800 antialiased">
         {children}
       </body>
     </html>

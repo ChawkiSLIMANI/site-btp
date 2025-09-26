@@ -43,31 +43,29 @@ export function HeroCarousel() {
     [autoplay]
   )
 
-// src/components/home/HeroCarousel.tsx (seulement le <div ref={sliderRef} ...>)
-return (
-  <div
-  ref={sliderRef}
-  className="keen-slider h-[80vh] md:h-[90vh] w-screen overflow-hidden -mt-px"
-  // 100dvw = viewport dynamique (évite 1px de débord sur iOS)
-  style={{
-    width: "100dvw",
-    marginLeft: "calc(50% - 50dvw)",
-    marginRight: "calc(50% - 50dvw)",
-  }}
->
-    {HERO_SLIDES.map((src, i) => (
-      <div key={src} className="keen-slider__slide relative">
-        <Image
-          src={src}
-          alt="AKSO Construction"
-          fill
-          className="object-cover"
-          priority={i === 0}
-        />
-        <div className="absolute inset-0 bg-black/40" />
-      </div>
-    ))}
-  </div>
-)
-
+  return (
+    <div
+      id="hero"
+      ref={sliderRef}
+      className="keen-slider h-[80vh] md:h-[90vh] overflow-hidden -mt-px"
+      style={{
+        width: '100vw',
+        marginLeft: 'calc((100vw - 100%) / -2)',
+        marginRight: 'calc((100vw - 100%) / -2)',
+      }}
+    >
+      {HERO_SLIDES.map((src, i) => (
+        <div key={src} className="keen-slider__slide relative">
+          <Image
+            src={src}
+            alt="AKSO Construction"
+            fill
+            className="object-cover"
+            priority={i === 0}
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+      ))}
+    </div>
+  )
 }
