@@ -1,7 +1,7 @@
 // src/components/layout/Header.tsx
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -19,6 +19,18 @@ export function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement | null>(null);
+  const [headerHeight, setHeaderHeight] = useState(64);
+
+  useEffect(() => {
+    const updateHeight = () => {
+      if (!headerRef.current) return;
+      setHeaderHeight(headerRef.current.getBoundingClientRect().height);
+    };
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
 
   // Track hero visibility to switch between transparent and solid header
   const [overHero, setOverHero] = useState(false);
@@ -36,13 +48,19 @@ export function Header() {
   }, [isHome]);
 
   useEffect(() => setOpen(false), [pathname]);
+
+  const isTransparent = isHome && overHero;
+
+  useEffect(() => {
+    if (!headerRef.current) return;
+    setHeaderHeight(headerRef.current.getBoundingClientRect().height);
+  }, [isTransparent, open]);
   useEffect(() => {
     if (!open) return;
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  const isTransparent = isHome && overHero;
   const headerPosition = "fixed inset-x-0 top-0";
   const headerAppearance = isTransparent
     ? "bg-transparent"
@@ -57,7 +75,7 @@ export function Header() {
 
   return (
     <>
-      <header className={headerBase}>
+      <header ref={headerRef} className={headerBase}>
         <div className="container mx-auto pl-2 pr-4 sm:px-4 h-16 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3" aria-label="AKSO Construction - Accueil">
@@ -140,7 +158,11 @@ export function Header() {
           </nav>
         </div>
       </header>
-      <div aria-hidden className={`transition-[height] duration-200 ${isTransparent ? "h-0" : "h-16"}`} />
+      <div
+        aria-hidden
+        className="shrink-0 transition-[height] duration-200"
+        style={{ height: isTransparent ? 0 : headerHeight }}
+      />
     </>
   );
 }
