@@ -1,7 +1,7 @@
 // src/components/layout/Header.tsx
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -19,13 +19,13 @@ export function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
-  const headerRef = useRef<HTMLElement | null>(null);
+  const barRef = useRef<HTMLDivElement | null>(null);
   const [headerHeight, setHeaderHeight] = useState(64);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const updateHeight = () => {
-      if (!headerRef.current) return;
-      setHeaderHeight(headerRef.current.getBoundingClientRect().height);
+      if (!barRef.current) return;
+      setHeaderHeight(barRef.current.getBoundingClientRect().height);
     };
     updateHeight();
     window.addEventListener("resize", updateHeight);
@@ -51,10 +51,10 @@ export function Header() {
 
   const isTransparent = isHome && overHero;
 
-  useEffect(() => {
-    if (!headerRef.current) return;
-    setHeaderHeight(headerRef.current.getBoundingClientRect().height);
-  }, [isTransparent, open]);
+  useLayoutEffect(() => {
+    if (!barRef.current) return;
+    setHeaderHeight(barRef.current.getBoundingClientRect().height);
+  }, [isTransparent]);
   useEffect(() => {
     if (!open) return;
     document.body.style.overflow = "hidden";
@@ -75,8 +75,8 @@ export function Header() {
 
   return (
     <>
-      <header ref={headerRef} className={headerBase}>
-        <div className="container mx-auto pl-2 pr-4 sm:px-4 h-16 flex items-center justify-between">
+      <header className={headerBase}>
+        <div ref={barRef} className="container mx-auto pl-2 pr-4 sm:px-4 h-16 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3" aria-label="AKSO Construction - Accueil">
             <div className="relative h-12 md:h-14 w-48 md:w-64 translate-y-[2px]">
