@@ -187,11 +187,11 @@ export const REALISATIONS: Realisation[] = [
       "Immeuble R+3 + 1 sous-sol : showroom (RDC & R-1), plateaux de bureaux à partir du R+1.",
     meta: {
       // moa: "SCI NS",
-      // moe: "Aurélie Cartier",
-      // bet: "BEGT (Structure)",
-      // eg: "PRESTIBAT",
-      // amount: "7 M€",
-      // duration: "18 mois",
+      moe: "Aurélie Cartier",
+      bet: "BEGT (Structure)",
+      eg: "PRESTIBAT",
+      amount: "7 M€",
+      duration: "18 mois",
     },
   },
 ];
