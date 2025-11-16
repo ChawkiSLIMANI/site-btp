@@ -9,7 +9,8 @@ export default function RealisationCard({ r }: { r: Realisation }) {
   const images = useMemo(() => (r.gallery?.length ? r.gallery : [r.cover]), [r.gallery, r.cover]);
   const [thumbIdx, setThumbIdx] = useState(0);
   const [lightboxIdx, setLightboxIdx] = useState(0);
-  const [open, setOpen] = useState(false);
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const total = images.length;
 
   const prev = () => setThumbIdx((i) => (i - 1 + total) % total);
@@ -19,10 +20,10 @@ export default function RealisationCard({ r }: { r: Realisation }) {
   const nextLightbox = () => setLightboxIdx((i) => (i + 1) % total);
 
   useEffect(() => {
-    if (!open) return;
+    if (!lightboxOpen) return;
     const handleKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setOpen(false);
+        setLightboxOpen(false);
       } else if (event.key === "ArrowLeft") {
         prevLightbox();
       } else if (event.key === "ArrowRight") {
@@ -36,11 +37,11 @@ export default function RealisationCard({ r }: { r: Realisation }) {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKey);
     };
-  }, [open]);
+  }, [lightboxOpen]);
 
   const openLightbox = (startIdx: number) => {
     setLightboxIdx(startIdx);
-    setOpen(true);
+    setLightboxOpen(true);
   };
 
   return (
@@ -103,13 +104,13 @@ export default function RealisationCard({ r }: { r: Realisation }) {
         {/* détails repliables */}
         <div className="mt-4">
           <button
-            onClick={() => setOpen(v => !v)}
+            onClick={() => setDetailsOpen((v) => !v)}
             className="text-sm font-medium underline underline-offset-2"
-            aria-expanded={open}
+            aria-expanded={detailsOpen}
           >
-            {open ? "Masquer les détails" : "Détails du projet"}
+            {detailsOpen ? "Masquer les détails" : "Détails du projet"}
           </button>
-          {open && (
+          {detailsOpen && (
             <dl className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
               {r.meta?.address && (
                 <>
@@ -127,13 +128,13 @@ export default function RealisationCard({ r }: { r: Realisation }) {
         </div>
       </div>
 
-      {open && (
+      {lightboxOpen && (
         <div
           className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex flex-col justify-center"
           role="dialog"
           aria-modal="true"
           onClick={(event) => {
-            if (event.target === event.currentTarget) setOpen(false);
+            if (event.target === event.currentTarget) setLightboxOpen(false);
           }}
         >
           <div className="relative mx-auto w-full max-w-4xl px-6">
@@ -178,7 +179,7 @@ export default function RealisationCard({ r }: { r: Realisation }) {
             <button
               type="button"
               aria-label="Fermer la galerie"
-              onClick={() => setOpen(false)}
+              onClick={() => setLightboxOpen(false)}
               className="absolute top-4 right-4 sm:top-6 sm:right-8 text-white text-3xl"
             >
               ×
