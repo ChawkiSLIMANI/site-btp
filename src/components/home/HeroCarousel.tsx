@@ -84,7 +84,7 @@ export function HeroCarousel() {
             placeholder="blur"
             loading={i === 0 ? 'eager' : 'lazy'}
           />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
       ))}
     </div>
