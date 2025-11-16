@@ -23,13 +23,16 @@ export function RefsTeaser() {
               key={realisation.slug}
               className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition"
             >
-              <Image
-                src={realisation.cover}
-                alt={realisation.title}
-                width={600}
-                height={400}
-                className="w-full h-48 object-cover"
-              />
+              <div className="relative aspect-[4/3] w-full overflow-hidden">
+                <Image
+                  src={realisation.cover}
+                  alt={realisation.title}
+                  fill
+                  sizes="(min-width:1024px) 33vw, 100vw"
+                  className="object-cover"
+                  quality={85}
+                />
+              </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-1">
                   {realisation.title}

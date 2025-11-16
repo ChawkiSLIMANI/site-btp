@@ -48,6 +48,7 @@ export function ServicesTeaser() {
                     fill
                     className="object-cover"
                     sizes="(min-width: 768px) 50vw, 100vw"
+                    quality={90}
                     priority={idx === 0}
                   />
                 </div>

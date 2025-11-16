@@ -28,18 +28,19 @@ export function MiniCarousel({ images, alt, className }: Props) {
 
   if (!safeImages.length) {
     return (
-      <div className={`relative w-full h-56 bg-gray-100 ${className ?? ""}`} />
+      <div className={`relative w-full aspect-[4/3] overflow-hidden bg-gray-100 ${className ?? ""}`} />
     );
   }
 
   return (
-    <div className={`relative w-full h-56 ${className ?? ""}`}>
+    <div className={`relative w-full aspect-[4/3] overflow-hidden ${className ?? ""}`}>
       <Image
         src={safeImages[index]}
         alt={alt}
         fill
         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
         className="object-cover"
+        quality={85}
         priority={false}
       />
 

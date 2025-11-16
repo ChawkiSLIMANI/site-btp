@@ -44,13 +44,14 @@ function RealisationMini({
   return (
     <div className="relative group overflow-hidden rounded-2xl shadow hover:shadow-lg transition">
       {/* Image courante */}
-      <div className="relative w-full h-60">
+      <div className="relative w-full overflow-hidden aspect-[4/3]">
         <Image
           src={images[idx]}
           alt={`${title} — photo ${idx + 1}`}
           fill
           sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
           className="object-cover transition duration-300 group-hover:scale-105"
+          quality={85}
         />
         <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition" />
       </div>

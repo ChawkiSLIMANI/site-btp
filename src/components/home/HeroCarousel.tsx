@@ -5,11 +5,14 @@ import Image from 'next/image'
 import { useKeenSlider } from 'keen-slider/react'
 import type { KeenSliderPlugin } from 'keen-slider'
 import 'keen-slider/keen-slider.min.css'
+import slide1 from '@public/images/placeholders/Carroussel_1.png'
+import slide2 from '@public/images/placeholders/Carroussel_2.webp'
+import slide3 from '@public/images/placeholders/Carroussel_3.jpg'
 
 const HERO_SLIDES = [
-  '/images/placeholders/Carroussel_1.png',
-  '/images/placeholders/Carroussel_2.webp',
-  '/images/placeholders/Carroussel_3.jpg',
+  { src: slide1, alt: 'Construction AKSO — Chantier 1' },
+  { src: slide2, alt: 'Construction AKSO — Chantier 2' },
+  { src: slide3, alt: 'Construction AKSO — Chantier 3' },
 ] as const
 
 const autoplay: KeenSliderPlugin = (slider) => {
@@ -19,12 +22,24 @@ const autoplay: KeenSliderPlugin = (slider) => {
   const next = () => { clear(); if (!mouseOver) timeout = setTimeout(() => slider.next(), 4000) }
 
   slider.on('created', () => {
-    slider.container.addEventListener('mouseover', () => { mouseOver = true;  clear() })
-    slider.container.addEventListener('mouseout',  () => { mouseOver = false; next() })
-    const onVis = () => (document.hidden ? clear() : next())
-    document.addEventListener('visibilitychange', onVis)
+    const container = slider.container
+
+    const handleMouseOver = () => { mouseOver = true; clear() }
+    const handleMouseOut = () => { mouseOver = false; next() }
+    const handleVisibility = () => (document.hidden ? clear() : next())
+
+    container.addEventListener('mouseover', handleMouseOver)
+    container.addEventListener('mouseout', handleMouseOut)
+    document.addEventListener('visibilitychange', handleVisibility)
+
     next()
-    slider.on('destroyed', () => { clear(); document.removeEventListener('visibilitychange', onVis) })
+
+    slider.on('destroyed', () => {
+      clear()
+      container.removeEventListener('mouseover', handleMouseOver)
+      container.removeEventListener('mouseout', handleMouseOut)
+      document.removeEventListener('visibilitychange', handleVisibility)
+    })
   })
   slider.on('dragStarted', clear)
   slider.on('animationEnded', next)
@@ -47,21 +62,27 @@ export function HeroCarousel() {
     <div
       id="hero"
       ref={sliderRef}
-      className="keen-slider h-[80vh] md:h-[90vh] overflow-hidden -mt-px"
+      className="keen-slider h-screen min-h-screen overflow-hidden -mt-px"
       style={{
         width: '100vw',
         marginLeft: 'calc((100vw - 100%) / -2)',
         marginRight: 'calc((100vw - 100%) / -2)',
+        minHeight: '100vh',
+        height: '100svh',
       }}
     >
-      {HERO_SLIDES.map((src, i) => (
-        <div key={src} className="keen-slider__slide relative">
+      {HERO_SLIDES.map((slide, i) => (
+        <div key={slide.src.src} className="keen-slider__slide relative min-h-full">
           <Image
-            src={src}
-            alt="AKSO Construction"
+            src={slide.src}
+            alt={slide.alt}
             fill
             className="object-cover"
+            sizes="100vw"
+            quality={90}
             priority={i === 0}
+            placeholder="blur"
+            loading={i === 0 ? 'eager' : 'lazy'}
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>

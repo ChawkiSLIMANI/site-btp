@@ -33,11 +33,14 @@ export function Header() {
   }, []);
 
   // Track hero visibility to switch between transparent and solid header
-  const [overHero, setOverHero] = useState(false);
+  const [overHero, setOverHero] = useState(isHome);
   useEffect(() => {
     if (!isHome) { setOverHero(false); return; }
     const hero = document.getElementById("hero");
-    if (!hero) return;
+    if (!hero) {
+      setOverHero(true);
+      return;
+    }
 
     const io = new IntersectionObserver(
       ([entry]) => setOverHero(entry.isIntersecting),

@@ -194,6 +194,42 @@ export const REALISATIONS: Realisation[] = [
       duration: "18 mois",
     },
   },
+  {
+    // TODO: compléter avec les informations finales validées par le client
+    slug: "chantier-pantin",
+    title: "Chantier Pantin",
+    type: "Construction",
+    city: "À préciser",
+    year: 2025,
+    cover: gallery("Chantier_Pantin", 7, ".jpeg")[0],
+    gallery: gallery("Chantier_Pantin", 7, ".jpeg"),
+    excerpt: "Description à compléter après validation client.",
+    meta: {
+      moa: "À préciser",
+      moe: "À préciser",
+      eg: "À préciser",
+      amount: "À confirmer",
+      duration: "À confirmer",
+    },
+  },
+  {
+    // TODO: compléter avec les informations finales validées par le client
+    slug: "chantier-bureaux",
+    title: "Chantier Bureaux",
+    type: "Construction",
+    city: "À préciser",
+    year: 2025,
+    cover: gallery("Chantier_BUREAUX", 1, ".jpeg")[0],
+    gallery: gallery("Chantier_BUREAUX", 1, ".jpeg"),
+    excerpt: "Description à compléter après validation client.",
+    meta: {
+      moa: "À préciser",
+      moe: "À préciser",
+      eg: "À préciser",
+      amount: "À confirmer",
+      duration: "À confirmer",
+    },
+  },
 ];
 
 export const TESTIMONIALS: Testimonial[] = [

@@ -4,13 +4,16 @@ import type { Service } from "@/lib/types";
 export function ServiceCard({ service }: { service: Service }) {
   return (
     <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
-      <Image
-        src={service.image}
-        alt={service.title}
-        width={800}
-        height={500}
-        className="w-full h-56 object-cover"
-      />
+      <div className="relative aspect-[4/3] w-full overflow-hidden">
+        <Image
+          src={service.image}
+          alt={service.title}
+          fill
+          sizes="(min-width:1024px) 33vw, 100vw"
+          className="object-cover"
+          quality={85}
+        />
+      </div>
       <div className="p-6">
         <h2 className="text-2xl font-semibold mb-3">{service.title}</h2>
         <p className="text-gray-600 mb-4">{service.description}</p>

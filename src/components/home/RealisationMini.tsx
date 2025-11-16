@@ -29,13 +29,14 @@ export function RealisationMini({ data }: { data: Realisation }) {
   return (
     <div className="relative overflow-hidden rounded-2xl shadow bg-white group">
       {/* Image courante */}
-      <div className="relative w-full h-60">
+      <div className="relative w-full overflow-hidden aspect-[4/3]">
         <Image
           src={images[idx]}
           alt={`${data.title} — photo ${idx + 1}`}
           fill
           sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
           className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          quality={85}
           priority={idx === 0}
         />
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition" />
