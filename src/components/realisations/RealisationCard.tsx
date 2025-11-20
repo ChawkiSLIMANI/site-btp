@@ -12,6 +12,7 @@ export default function RealisationCard({ r }: { r: Realisation }) {
   const images = useMemo(() => (r.gallery?.length ? r.gallery : [r.cover]), [r.gallery, r.cover]);
   const [thumbIdx, setThumbIdx] = useState(0);
   const [lightboxIdx, setLightboxIdx] = useState(0);
+  const [prevLightboxIdx, setPrevLightboxIdx] = useState<number | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxLoaded, setLightboxLoaded] = useState(false);
   const total = images.length;
@@ -19,8 +20,18 @@ export default function RealisationCard({ r }: { r: Realisation }) {
   const prev = () => setThumbIdx((i) => (i - 1 + total) % total);
   const next = () => setThumbIdx((i) => (i + 1) % total);
 
-  const prevLightbox = () => setLightboxIdx((i) => (i - 1 + total) % total);
-  const nextLightbox = () => setLightboxIdx((i) => (i + 1) % total);
+  const changeLightboxIdx = (compute: (current: number) => number) => {
+    setLightboxIdx((current) => {
+      const next = compute(current);
+      if (next === current) return current;
+      setPrevLightboxIdx(current);
+      setLightboxLoaded(false);
+      return next;
+    });
+  };
+
+  const prevLightbox = () => changeLightboxIdx((i) => (i - 1 + total) % total);
+  const nextLightbox = () => changeLightboxIdx((i) => (i + 1) % total);
 
   useEffect(() => {
     if (!lightboxOpen) return;
@@ -43,15 +54,11 @@ export default function RealisationCard({ r }: { r: Realisation }) {
   }, [lightboxOpen]);
 
   const openLightbox = (startIdx: number) => {
+    setPrevLightboxIdx(null);
     setLightboxIdx(startIdx);
     setLightboxLoaded(false);
     setLightboxOpen(true);
   };
-
-  useEffect(() => {
-    if (!lightboxOpen) return;
-    setLightboxLoaded(false);
-  }, [lightboxIdx, lightboxOpen]);
 
   return (
     <article className="rounded-2xl border bg-white shadow-sm overflow-hidden">
@@ -134,19 +141,35 @@ export default function RealisationCard({ r }: { r: Realisation }) {
               {!lightboxLoaded && (
                 <div className="absolute inset-0 bg-black/90 animate-pulse" aria-hidden />
               )}
+              {prevLightboxIdx !== null && !lightboxLoaded && (
+                <Image
+                  key={`${images[prevLightboxIdx]}-prev`}
+                  src={images[prevLightboxIdx]}
+                  alt=""
+                  fill
+                  className="absolute inset-0 object-contain transition-opacity duration-300 opacity-100"
+                  sizes="(min-width:1280px) 70vw, (min-width:768px) 80vw, 100vw"
+                  quality={60}
+                  loading="eager"
+                  priority
+                  aria-hidden="true"
+                />
+              )}
               <Image
-                key={images[lightboxIdx]}
+                key={`${images[lightboxIdx]}-current`}
                 src={images[lightboxIdx]}
                 alt={`${r.title} — photo ${lightboxIdx + 1}`}
                 fill
-                className="object-contain"
+                className={`relative object-contain bg-black transition-opacity duration-300 ${lightboxLoaded ? "opacity-100" : "opacity-0"}`}
                 sizes="(min-width:1280px) 70vw, (min-width:768px) 80vw, 100vw"
                 quality={80}
                 loading="eager"
-                placeholder="blur"
-                blurDataURL={BLUR_DATA_URL}
+                placeholder="empty"
                 priority={lightboxOpen}
-                onLoadingComplete={() => setLightboxLoaded(true)}
+                onLoadingComplete={() => {
+                  setLightboxLoaded(true);
+                  setPrevLightboxIdx(null);
+                }}
               />
             </div>
 
