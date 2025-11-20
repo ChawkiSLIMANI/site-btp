@@ -35,19 +35,37 @@ export function Header() {
   // Track hero visibility to switch between transparent and solid header
   const [overHero, setOverHero] = useState(isHome);
   useEffect(() => {
-    if (!isHome) { setOverHero(false); return; }
-    const hero = document.getElementById("hero");
-    if (!hero) {
-      setOverHero(true);
+    if (!isHome) {
+      setOverHero(false);
       return;
     }
 
+    let currentHero: Element | null = null;
     const io = new IntersectionObserver(
-      ([entry]) => setOverHero(entry.isIntersecting),
+      ([entry]) => setOverHero(entry?.isIntersecting ?? false),
       { threshold: 0.01 }
     );
-    io.observe(hero);
-    return () => io.disconnect();
+
+    const attachObserver = () => {
+      const hero = document.getElementById("hero");
+      if (!hero) {
+        if (!currentHero) setOverHero(false);
+        return;
+      }
+      if (hero === currentHero) return;
+      if (currentHero) io.unobserve(currentHero);
+      currentHero = hero;
+      io.observe(hero);
+    };
+
+    attachObserver();
+    const mo = new MutationObserver(attachObserver);
+    mo.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      mo.disconnect();
+      io.disconnect();
+    };
   }, [isHome]);
 
   useEffect(() => setOpen(false), [pathname]);
