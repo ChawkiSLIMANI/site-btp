@@ -14,7 +14,7 @@ export const SITE: SiteSettings = {
   name: "AKSO Construction",
   baseline:
     "Construction & rénovation tous corps d’état — pilotage rigoureux, transparence et qualité durable",
-  phone: "+33 6 86 22 75 66",
+  phone: "01 89 70 34 90",
   email: "j.aksou@akso-construction.fr",
   address: "25 rue de l’Abbé Grégoire 75006",
   hours: "Lun–Ven : 8h–18h",
