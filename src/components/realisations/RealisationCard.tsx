@@ -9,7 +9,6 @@ export default function RealisationCard({ r }: { r: Realisation }) {
   const images = useMemo(() => (r.gallery?.length ? r.gallery : [r.cover]), [r.gallery, r.cover]);
   const [thumbIdx, setThumbIdx] = useState(0);
   const [lightboxIdx, setLightboxIdx] = useState(0);
-  const [detailsOpen, setDetailsOpen] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const total = images.length;
 
@@ -98,34 +97,13 @@ export default function RealisationCard({ r }: { r: Realisation }) {
       {/* contenu */}
       <div className="p-5">
         <h3 className="text-lg font-semibold">{r.title}</h3>
-        <p className="text-sm text-gray-500">{r.city} — {r.year} — {r.type}</p>
         {r.excerpt && <p className="mt-2 text-gray-700 text-sm">{r.excerpt}</p>}
-
-        {/* détails repliables */}
-        <div className="mt-4">
-          <button
-            onClick={() => setDetailsOpen((v) => !v)}
-            className="text-sm font-medium underline underline-offset-2"
-            aria-expanded={detailsOpen}
-          >
-            {detailsOpen ? "Masquer les détails" : "Détails du projet"}
-          </button>
-          {detailsOpen && (
-            <dl className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
-              {r.meta?.address && (
-                <>
-                  <dt className="text-gray-500">Adresse</dt><dd>{r.meta.address}</dd>
-                </>
-              )}
-              {r.meta?.moa && (<><dt className="text-gray-500">Maître d’ouvrage</dt><dd>{r.meta.moa}</dd></>)}
-              {r.meta?.moe && (<><dt className="text-gray-500">Maître d’œuvre</dt><dd>{r.meta.moe}</dd></>)}
-              {r.meta?.bet && (<><dt className="text-gray-500">BET / Économiste</dt><dd>{r.meta.bet}</dd></>)}
-              {/* {r.meta?.eg && (<><dt className="text-gray-500">Entreprise</dt><dd>{r.meta.eg}</dd></>)} */}
-              {r.meta?.amount && (<><dt className="text-gray-500">Montant</dt><dd>{r.meta.amount}</dd></>)}
-              {r.meta?.duration && (<><dt className="text-gray-500">Durée</dt><dd>{r.meta.duration}</dd></>)}
-            </dl>
-          )}
-        </div>
+        {r.meta?.amount && (
+          <p className="mt-2 text-sm font-semibold text-gray-800">
+            Budget : <span className="font-normal text-gray-700">{r.meta.amount}</span>
+          </p>
+        )}
+        <p className="mt-2 text-sm text-gray-500">{r.city} — {r.year} — {r.type}</p>
       </div>
 
       {lightboxOpen && (
