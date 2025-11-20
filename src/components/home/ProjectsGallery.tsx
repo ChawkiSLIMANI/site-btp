@@ -7,6 +7,8 @@ import { useMemo, useState } from "react";
 import { REALISATIONS } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
 
+const BLUR_DATA_URL = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+
 // Slugs à afficher sur la Home (ordre imposé)
 const HOME_REAL_SLUGS = [
   "halle-sports-collette-besson-villejuif",
@@ -49,9 +51,13 @@ function RealisationMini({
           src={images[idx]}
           alt={`${title} — photo ${idx + 1}`}
           fill
-          sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+          sizes="(min-width:1280px) 25vw, (min-width:1024px) 30vw, (min-width:640px) 45vw, 100vw"
           className="object-cover transition duration-300 group-hover:scale-105"
-          quality={85}
+          quality={75}
+          loading="lazy"
+          decoding="async"
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
         />
         <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition" />
       </div>

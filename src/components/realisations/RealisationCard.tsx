@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import type { Realisation } from "@/lib/types";
 
+const BLUR_DATA_URL = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+
 export default function RealisationCard({ r }: { r: Realisation }) {
   const images = useMemo(() => (r.gallery?.length ? r.gallery : [r.cover]), [r.gallery, r.cover]);
   const [thumbIdx, setThumbIdx] = useState(0);
@@ -64,8 +66,12 @@ export default function RealisationCard({ r }: { r: Realisation }) {
           alt={`${r.title} — photo ${thumbIdx + 1}`}
           fill
           className="object-cover"
-          sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
-          quality={90}
+          sizes="(min-width:1280px) 25vw, (min-width:1024px) 30vw, (min-width:640px) 45vw, 100vw"
+          quality={75}
+          loading="lazy"
+          decoding="async"
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
           priority={false}
         />
         {total > 1 && (
@@ -124,8 +130,8 @@ export default function RealisationCard({ r }: { r: Realisation }) {
                 fill
                 className="object-contain"
                 sizes="100vw"
-                quality={95}
-                priority
+                quality={90}
+                loading="lazy"
               />
             </div>
 
