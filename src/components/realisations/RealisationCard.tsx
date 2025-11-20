@@ -4,14 +4,16 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import type { Realisation } from "@/lib/types";
+import { SUPPORTED_IMAGE_DOMAINS } from "@/lib/images";
 
-const BLUR_DATA_URL = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+const BLUR_DATA_URL = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==";
 
 export default function RealisationCard({ r }: { r: Realisation }) {
   const images = useMemo(() => (r.gallery?.length ? r.gallery : [r.cover]), [r.gallery, r.cover]);
   const [thumbIdx, setThumbIdx] = useState(0);
   const [lightboxIdx, setLightboxIdx] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxLoaded, setLightboxLoaded] = useState(false);
   const total = images.length;
 
   const prev = () => setThumbIdx((i) => (i - 1 + total) % total);
@@ -42,8 +44,14 @@ export default function RealisationCard({ r }: { r: Realisation }) {
 
   const openLightbox = (startIdx: number) => {
     setLightboxIdx(startIdx);
+    setLightboxLoaded(false);
     setLightboxOpen(true);
   };
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    setLightboxLoaded(false);
+  }, [lightboxIdx, lightboxOpen]);
 
   return (
     <article className="rounded-2xl border bg-white shadow-sm overflow-hidden">
@@ -122,16 +130,23 @@ export default function RealisationCard({ r }: { r: Realisation }) {
           }}
         >
           <div className="relative mx-auto w-full max-w-4xl px-6">
-            <div className="relative aspect-video rounded-2xl overflow-hidden bg-black">
+            <div className="relative aspect-video rounded-2xl overflow-hidden bg-black" suppressHydrationWarning>
+              {!lightboxLoaded && (
+                <div className="absolute inset-0 bg-black/90 animate-pulse" aria-hidden />
+              )}
               <Image
                 key={images[lightboxIdx]}
                 src={images[lightboxIdx]}
                 alt={`${r.title} — photo ${lightboxIdx + 1}`}
                 fill
                 className="object-contain"
-                sizes="100vw"
-                quality={90}
-                loading="lazy"
+                sizes="(min-width:1280px) 70vw, (min-width:768px) 80vw, 100vw"
+                quality={80}
+                loading="eager"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
+                priority={lightboxOpen}
+                onLoadingComplete={() => setLightboxLoaded(true)}
               />
             </div>
 
