@@ -7,6 +7,30 @@ import { gallery } from "@/lib/galleries";
 const rangeFiles = (prefix: string, start: number, end: number, ext = ".png") =>
   Array.from({ length: end - start + 1 }, (_, i) => `${prefix}_${i + start}${ext}`);
 
+const buildPaths = (base: string, entries: Array<{ index: number; ext: string }>) =>
+  entries.map(({ index, ext }) => `${base}_${index}${ext}`);
+
+const BEAUREPAIRE_GALLERY = buildPaths("/images/realisations/BEAUREPAIRE", [
+  { index: 1, ext: ".jpeg" },
+  { index: 2, ext: ".jpeg" },
+  { index: 3, ext: ".jpeg" },
+  { index: 4, ext: ".jpeg" },
+  { index: 5, ext: ".jpeg" },
+  { index: 6, ext: ".jpeg" },
+  { index: 7, ext: ".jpeg" },
+  { index: 8, ext: ".png" },
+  { index: 9, ext: ".png" },
+  { index: 10, ext: ".png" },
+]);
+
+const ILE_DE_FRANCE_MATERIAUX_GALLERY = buildPaths("/images/realisations/ILE_DE_France_Matériaux", [
+  { index: 1, ext: ".jpeg" },
+  { index: 2, ext: ".png" },
+  { index: 3, ext: ".png" },
+  { index: 4, ext: ".png" },
+  { index: 5, ext: ".png" },
+]);
+
 export const HERO_LEAD = "/images/placeholders/Carroussel_1.png";
 
 
@@ -57,9 +81,101 @@ export const SERVICES: Service[] = [
   },
 ];
 
-
-
 export const REALISATIONS: Realisation[] = [
+  {
+    slug: "beaurepaire-pantin-17-logements",
+    title: "« Beaurepaire » — Construction neuve de 19 logements",
+    type: "Construction",
+    city: "Pantin (93)",
+    year: 2025,
+    cover: BEAUREPAIRE_GALLERY[0],
+    gallery: BEAUREPAIRE_GALLERY,
+    excerpt:
+      "Construction neuve d’un bâtiment R+5 avec sous-sol parking et crèche au rez-de-chaussée.",
+    meta: {
+      address: "1 rue Beaurepaire, 93500 Pantin",
+      moa: "INEADOMO",
+      moe: "Maud Caubet — MOE EXE : Cabinet J2",
+      eg: "PRESTIBAT",
+      amount: "4 M€",
+      duration: "14 mois",
+    },
+  },
+  {
+    slug: "idf-materiaux-showroom-bureaux",
+    title: "Île-de-France Matériaux — Showroom 650 m² + Plateaux de bureaux 890 m²",
+    type: "Construction",
+    city: "Argenteuil (95)",
+    year: 2025,
+    cover: ILE_DE_FRANCE_MATERIAUX_GALLERY[0],
+    gallery: ILE_DE_FRANCE_MATERIAUX_GALLERY,
+    excerpt:
+      "Immeuble R+3 + 1 sous-sol : showroom (RDC & R-1), plateaux de bureaux à partir du R+1.",
+    meta: {
+      moe: "Aurélie Cartier",
+      bet: "BEGT (Structure)",
+      eg: "PRESTIBAT",
+      amount: "7 M€",
+      duration: "18 mois",
+    },
+  },
+  {
+    slug: "centre-culturel-coreen",
+    title: "Centre Culturel Coréen",
+    type: "Rénovation",
+    city: "Paris 8e (75)",
+    year: 2024,
+    cover: gallery("Centre_Culturel_Coréen", 3)[0],
+    gallery: gallery("Centre_Culturel_Coréen", 3),
+    excerpt:
+      "Réhabilitation d’un hôtel particulier : bureaux, espaces d’expo, salle de théâtre.",
+    meta: {
+      address: "20 rue de la Boétie, 75008 Paris",
+      moa: "Centre Culturel Coréen",
+      moe: "STUDIOS Architecture",
+      bet: "ELITHIS",
+      eg: "PRESTIBAT",
+      amount: "8 M€",
+      duration: "8 mois",
+    },
+  },
+  {
+    slug: "microplast-extension-usine",
+    title: "MICROPLAST — Extension d’usine (fondations & reprises)",
+    type: "Construction",
+    city: "Périgny-sur-Yerres (94)",
+    year: 2024,
+    cover: gallery("PERIGNY-SUR-YERRES", 3)[0],
+    gallery: gallery("PERIGNY-SUR-YERRES", 3),
+    excerpt:
+      "Fondations, reprises en sous-œuvre, dallage pour l’extension (≈ 3 500 m²).",
+    meta: {
+      moa: "MICROPLAST",
+      moe: "CUBA Architecture (EXE)",
+      eg: "PRESTIBAT",
+      amount: "1 M€ — Gros Œuvre",
+      duration: "3 mois",
+    },
+  },
+  {
+    slug: "netter-debergue-91-logements-creche",
+    title: "Programme « NETTER DEBERGUE » — 91 logements + crèche",
+    type: "Construction",
+    city: "Paris 12e (75)",
+    year: 2023,
+    cover: gallery("NETTER_DEBERGUE", 10)[0],
+    gallery: gallery("NETTER_DEBERGUE", 10),
+    excerpt:
+      "5 bâtiments en béton préfabriqué : 91 logements, crèche 99 berceaux, voirie nouvelle, ovoïde.",
+    meta: {
+      moa: "RATP Habitat",
+      moe: "R Architecture",
+      bet: "OTIS / OREGON — Structure : CSI",
+      eg: "Demathieu Bard",
+      amount: "25 M€ TCE",
+      duration: "25 mois",
+    },
+  },
   {
     slug: "halle-sports-collette-besson-villejuif",
     title: "Gymnase « Halle des Sports Collette Besson »",
@@ -95,153 +211,4 @@ export const REALISATIONS: Realisation[] = [
       duration: "25 mois",
     },
   },
-{
-  slug: "netter-debergue-91-logements-creche",
-  title: "Programme « NETTER DEBERGUE » — 91 logements + crèche",
-  type: "Construction",
-  city: "Paris 12e (75)",
-  year: 2023,
-  cover: gallery("NETTER_DEBERGUE", 10)[0],     // 1 → 10
-  gallery: gallery("NETTER_DEBERGUE", 10),
-  excerpt:
-    "5 bâtiments en béton préfabriqué : 91 logements, crèche 99 berceaux, voirie nouvelle, ovoïde.",
-  meta: {
-    moa: "RATP Habitat",
-    moe: "R Architecture",
-    bet: "OTIS / OREGON — Structure : CSI",
-    eg: "Demathieu Bard",
-    amount: "25 M€ TCE",
-    duration: "25 mois",
-  },
-},
-
-
-  {
-    slug: "beaurepaire-pantin-17-logements",
-    title: "« Beaurepaire » — Construction neuve de 19 logements",
-    type: "Construction",
-    city: "Pantin (93)",
-    year: 2025,
-    cover: gallery("BEAUREPAIRE", 3)[0],
-    gallery: gallery("BEAUREPAIRE", 3),
-    excerpt:
-      "Construction neuve d’un bâtiment R+5 avec sous-sol parking et crèche au rez-de-chaussée.",
-    meta: {
-      address: "1 rue Beaurepaire, 93500 Pantin",
-      moa: "INEADOMO",
-      moe: "Maud Caubet — MOE EXE : Cabinet J2",
-      eg: "PRESTIBAT",
-      amount: "4 M€",
-      duration: "14 mois",
-    },
-  },
-  {
-    slug: "centre-culturel-coreen",
-    title: "Centre Culturel Coréen",
-    type: "Rénovation",
-    city: "Paris 8e (75)",
-    year: 2024,
-    cover: gallery("Centre_Culturel_Coréen", 3)[0],
-    gallery: gallery("Centre_Culturel_Coréen", 3),
-    excerpt:
-      "Réhabilitation d’un hôtel particulier : bureaux, espaces d’expo, salle de théâtre.",
-    meta: {
-      address: "20 rue de la Boétie, 75008 Paris",
-      moa: "Centre Culturel Coréen",
-      moe: "STUDIOS Architecture",
-      bet: "ELITHIS",
-      eg: "PRESTIBAT",
-      amount: "8 M€",
-      duration: "8 mois",
-    },
-  },
-  {
-    // 🔥 PÉRIGNY-SUR-YERRES (Microplast) — ajouté
-    slug: "microplast-extension-usine",
-    title: "MICROPLAST — Extension d’usine (fondations & reprises)",
-    type: "Construction",
-    city: "Périgny-sur-Yerres (94)",
-    year: 2024,
-    cover: gallery("PERIGNY-SUR-YERRES", 3)[0],
-    gallery: gallery("PERIGNY-SUR-YERRES", 3),
-    excerpt:
-      "Fondations, reprises en sous-œuvre, dallage pour l’extension (≈ 3 500 m²).",
-    meta: {
-      moa: "MICROPLAST",
-      moe: "CUBA Architecture (EXE)",
-      eg: "PRESTIBAT",
-      amount: "1 M€ — Gros Œuvre",
-      duration: "3 mois",
-    },
-  },
-  {
-    slug: "idf-materiaux-showroom-bureaux",
-    title:
-      "Île-de-France Matériaux — Showroom 650 m² + Plateaux de bureaux 890 m²",
-    type: "Construction",
-    city: "Argenteuil (95)",
-    year: 2025,
-    cover: gallery("ILE_DE_France_Matériaux", 4)[0],
-    gallery: gallery("ILE_DE_France_Matériaux", 4),
-    excerpt:
-      "Immeuble R+3 + 1 sous-sol : showroom (RDC & R-1), plateaux de bureaux à partir du R+1.",
-    meta: {
-      // moa: "SCI NS",
-      moe: "Aurélie Cartier",
-      bet: "BEGT (Structure)",
-      eg: "PRESTIBAT",
-      amount: "7 M€",
-      duration: "18 mois",
-    },
-  },
-  {
-    slug: "chantier-pantin",
-    title: "« Beaurepaire » — Construction neuve de 19 logements",
-    type: "Construction",
-    city: "Pantin (93)",
-    year: 2025,
-    cover: gallery("Chantier_Pantin", 7, ".jpeg")[0],
-    gallery: gallery("Chantier_Pantin", 7, ".jpeg"),
-    excerpt: "Construction neuve d’un bâtiment R+5 avec sous-sol parking et crèche au RDC.",
-    meta: {
-      address: "Pantin (93)",
-      moa: "À préciser",
-      moe: "À préciser",
-      eg: "À préciser",
-      amount: "4 M€",
-      duration: "À confirmer",
-    },
-  },
-  {
-    slug: "chantier-bureaux",
-    title: "Immeuble de bureaux",
-    type: "Construction",
-    city: "Argenteuil (95)",
-    year: 2024,
-    cover: gallery("Chantier_BUREAUX", 1, ".jpeg")[0],
-    gallery: gallery("Chantier_BUREAUX", 1, ".jpeg"),
-    excerpt: "Construction neuve d’un bâtiment R+3 avec sous-sol.",
-    meta: {
-      moa: "À préciser",
-      moe: "À préciser",
-      eg: "À préciser",
-      amount: "3,5 M€",
-      duration: "À confirmer",
-    },
-  },
-];
-
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    name: "Jean Dupont",
-    quote: "Un travail impeccable, respect des délais et communication claire.",
-    city: "Paris",
-    rating: 5
-  },
-  {
-    name: "Sophie Martin",
-    quote: "Ma maison est exactement comme je l'avais imaginée, merci à toute l'équipe.",
-    city: "Boulogne-Billancourt",
-    rating: 5
-  }
 ];
