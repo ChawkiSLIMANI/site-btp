@@ -31,7 +31,7 @@ const ILE_DE_FRANCE_MATERIAUX_GALLERY = buildPaths("/images/realisations/ILE_DE_
   { index: 5, ext: ".png" },
 ]);
 
-export const HERO_LEAD = "/images/placeholders/Carroussel_1.png";
+export const HERO_LEAD = "/images/placeholders/HeroCarroussel_1.jpg";
 
 
 export const SITE: SiteSettings = {

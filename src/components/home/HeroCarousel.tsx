@@ -5,9 +5,9 @@ import Image from 'next/image'
 import { useKeenSlider } from 'keen-slider/react'
 import type { KeenSliderPlugin } from 'keen-slider'
 import 'keen-slider/keen-slider.min.css'
-import slide1 from '@public/images/placeholders/Carroussel_1.png'
-import slide2 from '@public/images/placeholders/Carroussel_2.webp'
-import slide3 from '@public/images/placeholders/Carroussel_3.jpg'
+import slide1 from '@public/images/placeholders/HeroCarroussel_1.jpg'
+import slide2 from '@public/images/placeholders/HeroCarroussel_2.jpg'
+import slide3 from '@public/images/placeholders/HeroCarroussel_3.jpg'
 
 const HERO_SLIDES = [
   { src: slide1, alt: 'Construction AKSO — Chantier 1' },
@@ -84,7 +84,7 @@ export function HeroCarousel() {
             placeholder="blur"
             loading={i === 0 ? 'eager' : 'lazy'}
           />
-          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 bg-black/10" />
         </div>
       ))}
     </div>
