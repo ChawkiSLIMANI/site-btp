@@ -208,7 +208,44 @@ export const REALISATIONS: Realisation[] = [
       moe: "TOUGERON Architecte",
       eg: "Demathieu Bard",
       amount: "20,6 M€ TCE",
-      duration: "25 mois",
+    duration: "25 mois",
     },
+  },
+];
+
+// Section dédiée aux réalisations AKSO (exemples à adapter avec vos projets réels)
+export const AKSO_REALISATIONS: Realisation[] = [
+  {
+    slug: "renovation-maison-de-ville-83m2",
+    title: "Rénovation d'une maison de ville 83m²",
+    type: "Rénovation",
+    city: "Lieu à préciser",
+    year: 2024,
+    cover: "/images/realisations/01-avant-apres-maison-de-ville-83m2.jpg",
+    gallery: [
+      "/images/realisations/01-avant-apres-maison-de-ville-83m2.jpg",
+      "/images/realisations/02-avant-apres-renovation-facade.jpg",
+      "/images/realisations/03-renovation-sejour-maison.jpg",
+      "/images/realisations/04-amenagement-escalier-maison-de-ville.jpg",
+      "/images/realisations/05-avant-apres-realisation-escalier.jpg",
+    ],
+    excerpt: "Détails à venir.",
+  },
+  {
+    slug: "renovation-appartement-4-pieces-78m2",
+    title: "Appartement 4 pièces de 78m²",
+    type: "Rénovation",
+    city: "Lieu à préciser",
+    year: 2024,
+    cover: "/images/realisations/renovation-interieur-appartement-4-pieces.jpg",
+    gallery: [
+      "/images/realisations/renovation-interieur-appartement-4-pieces.jpg",
+      "/images/realisations/avant-apres-renovation-salle-a-manger.jpg",
+      "/images/realisations/avant-apres-renovation-cuisine-architecte-interieur.jpg",
+      "/images/realisations/avant-apres-renovation-appartement-architecte-interieur.jpg",
+      "/images/realisations/avant-apres-renovation-salle-de-bain.jpg",
+      "/images/realisations/avant-apres-amenagement-chambre-enfant.jpg",
+    ],
+    excerpt: "Détails à venir.",
   },
 ];
