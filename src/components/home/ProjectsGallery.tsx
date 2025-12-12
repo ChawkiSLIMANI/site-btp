@@ -4,23 +4,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { REALISATIONS } from "@/lib/constants";
+import { REALISATIONS, SITE_CONFIG } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
 
 const BLUR_DATA_URL = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
-
-// Slugs à afficher sur la Home (ordre imposé)
-const HOME_REAL_SLUGS = [
-  "halle-sports-collette-besson-villejuif",
-  "netter-debergue-91-logements-creche",
-  "centre-culturel-coreen",
-] as const;
-
-// Index d’ordre pour le tri
-const ORDER_INDEX: Record<string, number> = HOME_REAL_SLUGS.reduce((acc, slug, i) => {
-  acc[slug] = i;
-  return acc;
-}, {} as Record<string, number>);
 
 /* --- Vignette projet avec mini-carrousel (flèches) --- */
 function RealisationMini({
@@ -106,15 +93,22 @@ function RealisationMini({
 }
 
 export function ProjectsGallery() {
-  // On garde seulement les 3 projets demandés et on les trie selon HOME_REAL_SLUGS
+  const { title, displayOrder } = SITE_CONFIG.home.projects;
+
+  // On garde seulement les 3 projets demandés et on les trie selon la config
+  const orderIndex: Record<string, number> = displayOrder.reduce((acc, slug, i) => {
+    acc[slug] = i;
+    return acc;
+  }, {} as Record<string, number>);
+
   const items = REALISATIONS
-    .filter((r) => r.slug in ORDER_INDEX)
-    .sort((a, b) => ORDER_INDEX[a.slug] - ORDER_INDEX[b.slug]);
+    .filter((r) => r.slug in orderIndex)
+    .sort((a, b) => orderIndex[a.slug] - orderIndex[b.slug]);
 
   return (
     <section className="py-16 bg-white">
       <Container>
-        <h2 className="text-3xl font-bold mb-10 text-center">Réalisations personnelles</h2>
+        <h2 className="text-3xl font-bold mb-10 text-center">{title}</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {items.map((r) => (
@@ -136,7 +130,7 @@ export function ProjectsGallery() {
             className="inline-flex items-center rounded-xl border px-5 py-2.5 text-sm font-medium hover:shadow-sm transition"
             aria-label="Voir toutes nos réalisations"
           >
-            Voir toutes nos réalisations →
+            {SITE_CONFIG.labels.viewAllProjects}
           </Link>
         </div>
       </Container>

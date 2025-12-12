@@ -5,15 +5,7 @@ import Image from 'next/image'
 import { useKeenSlider } from 'keen-slider/react'
 import type { KeenSliderPlugin } from 'keen-slider'
 import 'keen-slider/keen-slider.min.css'
-import slide1 from '@public/images/placeholders/HeroCarroussel_1.jpg'
-import slide2 from '@public/images/placeholders/HeroCarroussel_2.jpg'
-import slide3 from '@public/images/placeholders/HeroCarroussel_3.jpg'
-
-const HERO_SLIDES = [
-  { src: slide1, alt: 'Construction AKSO — Chantier 1' },
-  { src: slide2, alt: 'Construction AKSO — Chantier 2' },
-  { src: slide3, alt: 'Construction AKSO — Chantier 3' },
-] as const
+import { SITE_CONFIG } from '@/lib/constants'
 
 const autoplay: KeenSliderPlugin = (slider) => {
   let timeout: ReturnType<typeof setTimeout> | undefined
@@ -52,11 +44,13 @@ export function HeroCarousel() {
       loop: true,
       mode: 'snap',
       drag: true,
-      slides: { perView: 1, spacing: 0 }, // ✅ pas d’espace entre les slides
-      renderMode: 'precision',            // ✅ évite les arrondis qui laissent un filet
+      slides: { perView: 1, spacing: 0 },
+      renderMode: 'precision',
     },
     [autoplay]
   )
+
+  const slides = SITE_CONFIG.home.hero.slides;
 
   return (
     <div
@@ -71,8 +65,8 @@ export function HeroCarousel() {
         height: '100svh',
       }}
     >
-      {HERO_SLIDES.map((slide, i) => (
-        <div key={slide.src.src} className="keen-slider__slide relative min-h-full">
+      {slides.map((slide, i) => (
+        <div key={i} className="keen-slider__slide relative min-h-full">
           <Image
             src={slide.src}
             alt={slide.alt}
@@ -81,7 +75,6 @@ export function HeroCarousel() {
             sizes="100vw"
             quality={90}
             priority={i === 0}
-            placeholder="blur"
             loading={i === 0 ? 'eager' : 'lazy'}
           />
           <div className="absolute inset-0 bg-black/10" />

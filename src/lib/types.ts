@@ -1,7 +1,8 @@
 export type Service = {
   slug: string;
   title: string;
-  description: string;
+  description: string;       // Short description for cards/teasers
+  fullDescription?: string[]; // Detailed paragraphs for the service page
   bullets: string[];
   image: string;
 };

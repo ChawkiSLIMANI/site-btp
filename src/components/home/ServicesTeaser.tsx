@@ -3,29 +3,30 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { SERVICES } from "@/lib/constants";
+import { SERVICES, SITE_CONFIG } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
 
-// Rénovation d'abord, puis Construction
-const HOME_ORDER = ["renovation-interieure", "construction-maison"] as const;
-const ORDER_INDEX: Record<string, number> = HOME_ORDER.reduce((acc, slug, i) => {
-  acc[slug] = i;
-  return acc;
-}, {} as Record<string, number>);
-
 export function ServicesTeaser() {
+  const { title, subtitle, displayOrder } = SITE_CONFIG.home.services;
+
+  // Build an index for sorting based on config
+  const orderIndex: Record<string, number> = displayOrder.reduce((acc, slug, i) => {
+    acc[slug] = i;
+    return acc;
+  }, {} as Record<string, number>);
+
   const items = SERVICES
-    .filter((s) => s.slug in ORDER_INDEX)
-    .sort((a, b) => ORDER_INDEX[a.slug] - ORDER_INDEX[b.slug]);
+    .filter((s) => s.slug in orderIndex)
+    .sort((a, b) => orderIndex[a.slug] - orderIndex[b.slug]);
 
   return (
     <section className="py-16">
       <Container>
         <header className="mb-8 md:mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">Nos services</h2>
-          <p className="mt-2 text-gray-600">
-            Construction neuve et rénovation : une équipe unique, la même exigence.
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold">{title}</h2>
+          {subtitle && (
+            <p className="mt-2 text-gray-600">{subtitle}</p>
+          )}
         </header>
 
         <div className="grid gap-8 md:gap-10">
@@ -38,9 +39,8 @@ export function ServicesTeaser() {
               >
                 {/* Image(à droite pour le 1er, à gauche pour le 2nd) */}
                 <div
-                  className={`relative aspect-[4/3] overflow-hidden rounded-2xl ${
-                    imageOnRight ? "md:order-2" : "md:order-1"
-                  }`}
+                  className={`relative aspect-[4/3] overflow-hidden rounded-2xl ${imageOnRight ? "md:order-2" : "md:order-1"
+                    }`}
                 >
                   <Image
                     src={service.image}
@@ -55,9 +55,8 @@ export function ServicesTeaser() {
 
                 {/* Texte (inverse de l'image) */}
                 <div
-                  className={`flex flex-col gap-3 justify-center ${
-                    imageOnRight ? "md:order-1" : "md:order-2"
-                  }`}
+                  className={`flex flex-col gap-3 justify-center ${imageOnRight ? "md:order-1" : "md:order-2"
+                    }`}
                 >
                   <h3 className="text-2xl font-semibold tracking-tight">
                     {service.title}
@@ -89,7 +88,7 @@ export function ServicesTeaser() {
                       href={`/services#${service.slug}`}
                       className="inline-flex items-center rounded-xl px-4 py-2 text-sm font-medium border hover:shadow-sm transition"
                     >
-                      En savoir plus →
+                      {SITE_CONFIG.labels.moreInfo}
                     </Link>
                   </div>
                 </div>
