@@ -233,6 +233,6 @@ export const AKSO_REALISATIONS: Realisation[] = [
       "/images/realisations/appartement_paris_cuisine_apres.png",
       "/images/realisations/appartement_paris_chambre_apres.png",
     ],
-    excerpt: "Renovation d'appartement type Haussmannien avec design moderne.",
+    excerpt: "Renovation totale d'un appartement de 87m2.",
   },
 ];

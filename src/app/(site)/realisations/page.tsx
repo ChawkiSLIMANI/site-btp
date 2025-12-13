@@ -1,5 +1,5 @@
 // src/app/(site)/realisations/page.tsx
-import { AKSO_REALISATIONS, REALISATIONS } from "@/lib/constants";
+import { AKSO_REALISATIONS, REALISATIONS, SITE } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
 import RealisationCard from "@/components/realisations/RealisationCard";
 
@@ -31,8 +31,8 @@ export default function RealisationsPage() {
             <h2 id="realisations-akso-title" className="text-3xl md:text-4xl font-bold">
               Réalisation AKSO
             </h2>
-            <p className="mt-2 text-gray-600 max-w-3xl">
-              Projets livrés directement par l&apos;équipe AKSO Construction. Les détails des chantiers seront ajoutés prochainement.
+            <p className="text-gray-600 mb-8 max-w-2xl">
+              Projets livrés directement par l&apos;équipe {SITE.name}.
             </p>
           </header>
 
