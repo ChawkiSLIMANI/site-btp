@@ -29,7 +29,7 @@ export default function RealisationsPage() {
         >
           <header className="mb-6 md:mb-8">
             <h2 id="realisations-akso-title" className="text-3xl md:text-4xl font-bold">
-              Réalisation Akso
+              Réalisation AKSO
             </h2>
             <p className="mt-2 text-gray-600 max-w-3xl">
               Projets livrés directement par l&apos;équipe AKSO Construction. Les détails des chantiers seront ajoutés prochainement.

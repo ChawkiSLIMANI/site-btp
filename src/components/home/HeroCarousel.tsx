@@ -5,14 +5,16 @@ import Image from 'next/image'
 import { useKeenSlider } from 'keen-slider/react'
 import type { KeenSliderPlugin } from 'keen-slider'
 import 'keen-slider/keen-slider.min.css'
-import slide1 from '@public/images/placeholders/HeroCarroussel_1.jpg'
-import slide2 from '@public/images/placeholders/HeroCarroussel_2.jpg'
+import slide1 from '@public/images/placeholders/HeroCarroussel_1.png'
+import slide2 from '@public/images/placeholders/HeroCarroussel_2.png'
 import slide3 from '@public/images/placeholders/HeroCarroussel_3.jpg'
+import slide4 from '@public/images/placeholders/HeroCarroussel_4.png'
 
 const HERO_SLIDES = [
   { src: slide1, alt: 'Construction AKSO — Chantier 1' },
   { src: slide2, alt: 'Construction AKSO — Chantier 2' },
   { src: slide3, alt: 'Construction AKSO — Chantier 3' },
+  { src: slide4, alt: 'Construction AKSO — Chantier 4' }
 ] as const
 
 const autoplay: KeenSliderPlugin = (slider) => {

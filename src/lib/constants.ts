@@ -66,7 +66,7 @@ export const SERVICES: Service[] = [
       "Finitions soignées",
       "Optimisation des espaces",
     ],
-    image: "/images/placeholders/REHABILITATION.jpg", // ton image de réhabilitation
+    image: "/images/placeholders/RenovationRehab.jpg", // ton image de réhabilitation
   },
   {
     slug: "construction-maison",
@@ -77,7 +77,7 @@ export const SERVICES: Service[] = [
       "Respect des délais",
       "Qualité d’exécution",
     ],
-    image: "/images/realisations/NETTER_DEBERGUE_6.png",
+    image: "/images/placeholders/ConstructionNeuve.jpg",
   },
 ];
 
@@ -208,7 +208,7 @@ export const REALISATIONS: Realisation[] = [
       moe: "TOUGERON Architecte",
       eg: "Demathieu Bard",
       amount: "20,6 M€ TCE",
-    duration: "25 mois",
+      duration: "25 mois",
     },
   },
 ];
@@ -216,36 +216,20 @@ export const REALISATIONS: Realisation[] = [
 // Section dédiée aux réalisations AKSO (exemples à adapter avec vos projets réels)
 export const AKSO_REALISATIONS: Realisation[] = [
   {
-    slug: "renovation-maison-de-ville-83m2",
-    title: "Rénovation d'une maison de ville 83m²",
+    slug: "renovation-appartement-paris-8",
+    title: "Appartement Paris 8ème - Rue de Berri",
     type: "Rénovation",
-    city: "Lieu à préciser",
-    year: 2024,
-    cover: "/images/realisations/01-avant-apres-maison-de-ville-83m2.jpg",
+    city: "Paris 8ème (75)",
+    year: 2025,
+    cover: "/images/realisations/appartement_paris_sejour_après.png",
     gallery: [
-      "/images/realisations/01-avant-apres-maison-de-ville-83m2.jpg",
-      "/images/realisations/02-avant-apres-renovation-facade.jpg",
-      "/images/realisations/03-renovation-sejour-maison.jpg",
-      "/images/realisations/04-amenagement-escalier-maison-de-ville.jpg",
-      "/images/realisations/05-avant-apres-realisation-escalier.jpg",
+      "/images/realisations/appartement_paris_sejour_avant.png",
+      "/images/realisations/appartement_paris_cuisine_avant.png",
+      "/images/realisations/appartement_paris_chambre_avant.png",
+      "/images/realisations/appartement_paris_sejour_après.png",
+      "/images/realisations/appartement_paris_cuisine_apres.png",
+      "/images/realisations/appartement_paris_chambre_apres.png",
     ],
-    excerpt: "Détails à venir.",
-  },
-  {
-    slug: "renovation-appartement-4-pieces-78m2",
-    title: "Appartement 4 pièces de 78m²",
-    type: "Rénovation",
-    city: "Lieu à préciser",
-    year: 2024,
-    cover: "/images/realisations/renovation-interieur-appartement-4-pieces.jpg",
-    gallery: [
-      "/images/realisations/renovation-interieur-appartement-4-pieces.jpg",
-      "/images/realisations/avant-apres-renovation-salle-a-manger.jpg",
-      "/images/realisations/avant-apres-renovation-cuisine-architecte-interieur.jpg",
-      "/images/realisations/avant-apres-renovation-appartement-architecte-interieur.jpg",
-      "/images/realisations/avant-apres-renovation-salle-de-bain.jpg",
-      "/images/realisations/avant-apres-amenagement-chambre-enfant.jpg",
-    ],
-    excerpt: "Détails à venir.",
+    excerpt: "Renovation d'appartement type Haussmannien avec design moderne.",
   },
 ];
