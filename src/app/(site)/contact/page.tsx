@@ -13,8 +13,7 @@ export default function ContactPage() {
         {/* Bandeau titre SANS encadrement + police écriture */}
         <section className="mb-10 text-center">
           <h1
-            className="text-4xl md:text-5xl leading-tight"
-            style={{ fontFamily: "var(--font-elegant)" }}
+            className="text-4xl md:text-5xl leading-tight font-bold"
           >
             LA PROMESSE D&rsquo;UN PROJET RÉUSSI
           </h1>

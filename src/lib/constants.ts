@@ -146,7 +146,10 @@ export const REALISATIONS: Realisation[] = [
     city: "Périgny-sur-Yerres (94)",
     year: 2024,
     cover: gallery("PERIGNY-SUR-YERRES", 3)[0],
-    gallery: gallery("PERIGNY-SUR-YERRES", 3),
+    gallery: [
+      ...gallery("PERIGNY-SUR-YERRES", 4, ".png"),
+      ...gallery("PERIGNY-SUR-YERRES", [5, 6], ".webp"),
+    ],
     excerpt:
       "Fondations, reprises en sous-œuvre, dallage pour l’extension (≈ 3 500 m²).",
     meta: {
@@ -221,12 +224,12 @@ export const AKSO_REALISATIONS: Realisation[] = [
     type: "Rénovation",
     city: "Paris 8ème (75)",
     year: 2025,
-    cover: "/images/realisations/appartement_paris_sejour_après.png",
+    cover: "/images/realisations/appartement_paris_sejour_apres.png",
     gallery: [
       "/images/realisations/appartement_paris_sejour_avant.png",
       "/images/realisations/appartement_paris_cuisine_avant.png",
       "/images/realisations/appartement_paris_chambre_avant.png",
-      "/images/realisations/appartement_paris_sejour_après.png",
+      "/images/realisations/appartement_paris_sejour_apres.png",
       "/images/realisations/appartement_paris_cuisine_apres.png",
       "/images/realisations/appartement_paris_chambre_apres.png",
     ],

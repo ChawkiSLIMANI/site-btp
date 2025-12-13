@@ -14,7 +14,7 @@ export function Footer() {
   );
 
   return (
-    <footer className="mt-12 border-t border-gray-200 bg-slate-900 text-white">
+    <footer className="mt-12 border-t border-gray-200 bg-[#5E5B4C] text-white">
       <div className="container mx-auto px-4 py-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div className="space-y-1 text-sm">
           <p className="font-semibold">{SITE.name}</p>
