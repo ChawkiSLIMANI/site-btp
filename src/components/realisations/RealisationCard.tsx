@@ -118,12 +118,12 @@ export default function RealisationCard({ r }: { r: Realisation }) {
       <div className="p-5">
         <h3 className="text-lg font-semibold">{r.title}</h3>
         {r.excerpt && <p className="mt-2 text-gray-700 text-sm">{r.excerpt}</p>}
-        {r.meta?.amount && (
+        {/* {r.meta?.amount && (
           <p className="mt-2 text-sm font-semibold text-gray-800">
             Budget : <span className="font-normal text-gray-700">{r.meta.amount}</span>
           </p>
-        )}
-        <p className="mt-2 text-sm text-gray-500">{r.city} — {r.year} — {r.type}</p>
+        )} */}
+        <p className="mt-2 text-sm text-gray-500">{r.city} — {r.type}</p>
       </div>
 
       {lightboxOpen && (
