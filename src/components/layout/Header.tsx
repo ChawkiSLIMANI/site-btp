@@ -9,9 +9,9 @@ import { usePathname } from "next/navigation";
 type NavItem = { href: string; label: string };
 const NAV: NavItem[] = [
   { href: "/", label: "Accueil" },
-  { href: "/a-propos", label: "À propos" },
-  { href: "/services", label: "Services" },
-  { href: "/realisations", label: "Réalisations" },
+  { href: "/a-propos", label: "Qui suis-je ?" },
+  { href: "/services", label: "Mes Offres" },
+  { href: "/realisations", label: "Témoignages" },
   { href: "/contact", label: "Contact" },
 ];
 

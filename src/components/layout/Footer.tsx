@@ -48,8 +48,9 @@ export function Footer() {
         </div>
 
         <nav className="text-sm flex gap-4 opacity-90">
-          <Link href="/a-propos" className="hover:underline">À propos</Link>
-          <Link href="/realisations" className="hover:underline">Réalisations</Link>
+          <Link href="/a-propos" className="hover:underline">Qui suis-je ?</Link>
+          <Link href="/services" className="hover:underline">Mes Offres</Link>
+          <Link href="/realisations" className="hover:underline">Témoignages</Link>
           <Link href="/contact" className="hover:underline">Contact</Link>
         </nav>
       </div>
