@@ -1,7 +1,6 @@
 // src/components/layout/Footer.tsx
 import Link from "next/link";
 import { SITE } from "@/lib/constants";
-import { FooterBadges } from "./FooterBadges";
 
 // Icône Instagram (SVG path)
 const ICON_INSTAGRAM =
@@ -14,10 +13,13 @@ export function Footer() {
   );
 
   return (
-    <footer className="mt-12 border-t border-gray-200 bg-slate-900 text-white">
+    <footer className="mt-12 border-t border-white/10 bg-black text-white">
       <div className="container mx-auto px-4 py-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        <div className="space-y-1 text-sm">
-          <p className="font-semibold">{SITE.name}</p>
+        <div className="space-y-4 text-sm">
+          <div className="relative h-16 w-32">
+            <img src="/images/placeholders/logo-AC-1.jpeg" alt="Aksou Coaching" className="h-full w-full object-contain object-left" />
+          </div>
+          <p className="font-semibold text-brand">{SITE.name}</p>
           <p className="opacity-80">
             {SITE.address} — {SITE.phone}
           </p>
@@ -51,8 +53,6 @@ export function Footer() {
           <Link href="/contact" className="hover:underline">Contact</Link>
         </nav>
       </div>
-
-      <FooterBadges />
 
       <div className="py-4 text-center text-xs opacity-75">
         © {new Date().getFullYear()} {SITE.name} — Tous droits réservés

@@ -1,15 +1,13 @@
-'use client'
-
-import { HeroCarousel } from '@/components/home/HeroCarousel'
-import { ServicesTeaser } from '@/components/home/ServicesTeaser'
-import { ProjectsGallery } from '@/components/home/ProjectsGallery'
+import { Hero } from '@/components/home/Hero'
+import { Features } from '@/components/home/Features'
+import { Reviews } from '@/components/home/Reviews'
 
 export default function HomePage() {
   return (
     <>
-      <HeroCarousel />
-      <ServicesTeaser />
-      <ProjectsGallery />
+      <Hero />
+      <Features />
+      <Reviews />
     </>
   )
 }

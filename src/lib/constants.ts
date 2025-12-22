@@ -37,10 +37,10 @@ const ILE_DE_FRANCE_MATERIAUX_GALLERY = buildPaths("/images/realisations/ILE_DE_
 export const SITE_CONFIG = {
   /** General Site Settings (Contact, Socials, etc.) */
   general: {
-    name: "Mon Entreprise", // Generic Placeholder
-    baseline: "Votre slogan accrocheur ici — Expertise, Qualité et Engagement",
+    name: "Aksou Coaching",
+    baseline: "Coach des leaders sous pression",
     phone: "01 23 45 67 89",
-    email: "contact@mon-entreprise.fr",
+    email: "contact@aksou-coaching.com",
     address: "10 rue de l'Exemple, 75000 Paris",
     hours: "Lun–Ven : 9h–18h",
     areas: ["Paris", "Île-de-France"],

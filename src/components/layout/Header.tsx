@@ -84,31 +84,34 @@ export function Header() {
 
   const headerPosition = "fixed inset-x-0 top-0";
   const headerAppearance = isTransparent
-    ? "bg-transparent"
-    : "bg-white/90 backdrop-blur border-b";
-  const headerBase = `${headerPosition} z-50 w-full transition-colors duration-200 ${headerAppearance}`;
+    ? "bg-transparent py-4"
+    : "bg-black/90 backdrop-blur-md border-b border-white/5 py-4";
+  const headerBase = `${headerPosition} z-50 w-full transition-all duration-300 ${headerAppearance}`;
 
-  const linkBase = "text-sm font-medium transition-colors";
-  const linkColor = isTransparent
-    ? "text-white hover:text-white/80"
-    : "text-gray-700 hover:text-cyan-700";
-  const linkActive = isTransparent ? "text-white" : "text-cyan-700";
+  const linkBase = "text-sm font-medium transition-colors tracking-wide";
 
   return (
     <>
       <header className={headerBase}>
-        <div ref={barRef} className="container mx-auto pl-2 pr-4 sm:px-4 h-16 flex items-center justify-between">
+        <div ref={barRef} className="container mx-auto pl-2 pr-4 sm:px-4 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3" aria-label="AKSO Construction - Accueil">
-            <div className="relative h-12 md:h-14 w-48 md:w-64 translate-y-[2px]">
+          <Link href="/" className="flex items-center gap-4" aria-label="Aksou Coaching - Accueil">
+            <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-brand shadow-[0_0_15px_rgba(212,175,55,0.3)]">
               <Image
-                src="/images/placeholders/logoak.png"
-                alt="AKSO Construction"
+                src="/images/placeholders/logo-AC-2.jpeg"
+                alt="Aksou Coaching"
                 fill
-                sizes="(min-width: 768px) 256px, 192px"
-                className={`object-contain ${isTransparent ? "invert" : ""}`}
+                className="object-cover"
                 priority
               />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-serif text-2xl font-bold tracking-wider text-white">
+                AKSOU
+              </span>
+              <span className="text-xs uppercase tracking-[0.2em] text-brand">
+                Coaching
+              </span>
             </div>
           </Link>
 
@@ -120,7 +123,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`${linkBase} ${active ? linkActive : linkColor}`}
+                  className={`${linkBase} ${active ? "text-brand" : "text-white/90 hover:text-brand"}`}
                 >
                   {item.label}
                 </Link>
@@ -135,9 +138,8 @@ export function Header() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
-            className={`md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border ${
-              isTransparent ? "border-white/70 text-white" : "border-gray-300 text-gray-900"
-            }`}
+            className={`md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border ${isTransparent ? "border-white/70 text-white" : "border-gray-300 text-gray-900"
+              }`}
           >
             <span className="sr-only">Menu</span>
             <div className="relative w-5 h-5">
@@ -153,24 +155,18 @@ export function Header() {
           id="mobile-menu"
           className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${open ? "max-h-96" : "max-h-0"}`}
         >
-          <nav className={`px-4 py-3 flex flex-col gap-2 ${
-            isTransparent ? "bg-black/60 text-white" : "bg-white"
-          }`}>
+          <nav className={`px-4 py-3 flex flex-col gap-2 ${isTransparent ? "bg-black/90 text-white" : "bg-white"
+            }`}>
             {NAV.map((item) => {
               const active = pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`block rounded-lg px-3 py-2 text-base ${
-                  active
-                    ? isTransparent
-                      ? "bg-white/10"
-                      : "text-cyan-700 bg-cyan-50"
-                    : isTransparent
-                    ? "hover:bg-white/10"
-                    : "text-gray-800 hover:bg-gray-50"
-                  }`}
+                  className={`block rounded-lg px-3 py-2 text-base ${active
+                    ? "text-brand font-bold"
+                    : "hover:text-brand"
+                    }`}
                 >
                   {item.label}
                 </Link>
