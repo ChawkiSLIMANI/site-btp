@@ -138,7 +138,9 @@ export function Header() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
-            className={`md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border ${isTransparent ? "border-white/70 text-white" : "border-gray-300 text-gray-900"
+            className={`md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border ${isTransparent
+              ? "border-white/70 text-white"
+              : "border-white/20 text-white bg-white/5" // Force dark theme mode
               }`}
           >
             <span className="sr-only">Menu</span>
@@ -155,17 +157,16 @@ export function Header() {
           id="mobile-menu"
           className={`md:hidden overflow-hidden transition-[max-height] duration-300 ${open ? "max-h-96" : "max-h-0"}`}
         >
-          <nav className={`px-4 py-3 flex flex-col gap-2 ${isTransparent ? "bg-black/90 text-white" : "bg-white"
-            }`}>
+          <nav className="px-4 py-3 flex flex-col gap-2 bg-black/95 text-white border-t border-white/10 shadow-xl">
             {NAV.map((item) => {
               const active = pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`block rounded-lg px-3 py-2 text-base ${active
-                    ? "text-brand font-bold"
-                    : "hover:text-brand"
+                  className={`block rounded-lg px-3 py-2 text-base transition-colors ${active
+                    ? "text-brand font-bold bg-white/10"
+                    : "text-gray-300 hover:text-white hover:bg-white/5"
                     }`}
                 >
                   {item.label}
