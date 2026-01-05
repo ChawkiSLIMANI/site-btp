@@ -23,9 +23,7 @@ export function Footer() {
           <p className="opacity-80">
             {SITE.address}
           </p>
-          <a className="underline opacity-90" href={`mailto:${SITE.email}`}>
-            {SITE.email}
-          </a>
+
         </div>
 
         {/* Instagram seulement */}
