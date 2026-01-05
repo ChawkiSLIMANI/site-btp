@@ -45,7 +45,7 @@ export function Services() {
                             href="https://calendly.com/aksoucoaching"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 rounded-full bg-brand px-8 py-3 text-lg font-bold text-black transition-transform hover:scale-105 hover:bg-brand-light"
+                            className="inline-flex items-center gap-3 rounded-xl bg-[#D4AF37] px-8 py-4 text-lg font-bold text-black transition-all hover:bg-[#FCD34D] hover:scale-105 shadow-[0_0_15px_rgba(212,175,55,0.3)]"
                         >
                             <span>📅</span>
                             <span>Réserver mon appel</span>
