@@ -3,19 +3,19 @@
 export function Services() {
     const offers = [
         {
-            title: "Coaching Individuel",
-            target: "Dirigeants & Managers",
-            description: "Un accompagnement sur- mesure pour débloquer votre potentiel et surmonter vos défis actuels.",
+            title: "Offre Spotlight",
+            target: "1 Séance",
+            description: "Un coaching ciblé pour débloquer une situation immédiate. Prix : 300€ HT.",
         },
         {
-            title: "Ateliers Collectifs",
+            title: "Offre Transformation",
+            target: "10 Séances",
+            description: "Un accompagnement complet avec bilans mi-parcours et fin. Séances toutes les 2 semaines. Prix : 2650€ HT.",
+        },
+        {
+            title: "Séance en groupe",
             target: "Équipes",
-            description: "Renforcez la cohésion et la performance de vos équipes en situation de stress.",
-        },
-        {
-            title: "Mentoring",
-            target: "Entrepreneurs",
-            description: "Un suivi stratégique pour vous aider à prendre les bonnes décisions.",
+            description: "Renforcez la cohésion et la performance de vos équipes. Sur devis.",
         },
     ]
 

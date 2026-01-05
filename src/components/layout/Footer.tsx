@@ -56,7 +56,8 @@ export function Footer() {
       </div>
 
       <div className="py-4 text-center text-xs opacity-75">
-        © {new Date().getFullYear()} {SITE.name} — Tous droits réservés
+        © {new Date().getFullYear()} {SITE.name} — SIREN : 839 341 468 00016
+
       </div>
     </footer>
   );

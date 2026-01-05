@@ -12,7 +12,7 @@ export function About() {
                             src="/profile.jpg"
                             alt="Coach Aksou"
                             fill
-                            className="object-cover"
+                            className="object-contain"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                         <div className="absolute bottom-6 left-6">

@@ -15,10 +15,9 @@ export function Hero() {
 
             <div className="container relative z-10 mx-auto px-4 text-center">
                 <h1 className="font-serif mb-8 text-5xl font-bold leading-tight md:text-8xl drop-shadow-2xl">
-                    <span className="block bg-gradient-gold bg-clip-text text-transparent py-2">
-                        Coach des leaders
+                    <span className="block text-brand py-2">
+                        Coach pour leader sous pression
                     </span>
-                    <span className="block text-white">sous pression</span>
                 </h1>
 
                 <p className="mx-auto mb-12 max-w-3xl text-lg font-light tracking-wide text-gray-300 md:text-2xl">

@@ -41,7 +41,7 @@ export const SITE_CONFIG = {
     baseline: "Coach des leaders sous pression",
     phone: "01 23 45 67 89",
     email: "contact@aksou-coaching.com",
-    address: "10 rue de l'Exemple, 75000 Paris",
+    address: "Paris",
     hours: "Lun–Ven : 9h–18h",
     areas: ["Paris", "Île-de-France"],
     socials: [
