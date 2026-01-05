@@ -21,7 +21,7 @@ export function Footer() {
           </div>
           <p className="font-semibold text-brand">{SITE.name}</p>
           <p className="opacity-80">
-            {SITE.address} — {SITE.phone}
+            {SITE.address}
           </p>
           <a className="underline opacity-90" href={`mailto:${SITE.email}`}>
             {SITE.email}

@@ -30,15 +30,7 @@ export function Contact() {
                                 </a>
                             </div>
 
-                            <div className="text-center text-gray-400">
-                                <p className="mb-2">ou contactez-moi directement :</p>
-                                <a
-                                    href="mailto:contact@aksou-coaching.com"
-                                    className="text-lg font-medium text-white transition-colors hover:text-[#D4AF37] hover:underline"
-                                >
-                                    contact@aksou-coaching.com
-                                </a>
-                            </div>
+
                         </div>
 
                         {/* Simple Form */}

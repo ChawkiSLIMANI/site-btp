@@ -16,7 +16,7 @@ export function Hero() {
             <div className="container relative z-10 mx-auto px-4 text-center">
                 <h1 className="font-serif mb-8 text-5xl font-bold leading-tight md:text-8xl drop-shadow-2xl">
                     <span className="block text-brand py-2">
-                        Coach pour leader sous pression
+                        Décider juste, même quand tout va vite.
                     </span>
                 </h1>
 
