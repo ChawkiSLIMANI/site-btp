@@ -41,6 +41,15 @@ export function Services() {
                         <p className="text-sm italic text-gray-400">
                             * Sans engagement. Donne accès ensuite aux formules Spotlight ou Transformation.
                         </p>
+                        <a
+                            href="https://calendly.com/aksoucoaching"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full bg-brand px-8 py-3 text-lg font-bold text-black transition-transform hover:scale-105 hover:bg-brand-light"
+                        >
+                            <span>📅</span>
+                            <span>Réserver mon appel</span>
+                        </a>
                     </div>
                 </div>
 
