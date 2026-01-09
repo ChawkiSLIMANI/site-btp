@@ -1,15 +1,6 @@
-"use client";
-
 import { SITE } from "@/lib/constants";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-
 
 export default function ContactPage() {
-  const router = useRouter();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-
   const instagram =
     (SITE.socials ?? []).find(
       (s) => s.label.toLowerCase() === "instagram"
@@ -33,13 +24,13 @@ export default function ContactPage() {
             <h2 className="text-2xl font-semibold mb-4">Contactez-nous</h2>
 
             <form
-              name="contact-form-main"
+              name="contact-final"
               method="POST"
               action="/merci"
               data-netlify="true"
               className="space-y-4"
             >
-              <input type="hidden" name="form-name" value="contact-form-main" />
+              <input type="hidden" name="form-name" value="contact-final" />
 
               <div>
                 <label className="block mb-1">Nom *</label>
