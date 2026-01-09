@@ -21,11 +21,17 @@ export default function ContactPage() {
     setIsSubmitting(true);
     setErrorMessage("");
 
-    const formData = new FormData(event.currentTarget);
-
     try {
-      // On poste vers le fichier statique pour garantir que Netlify intercepte bien la donnée
-      const response = await fetch("/contact-form.html", {
+      const myForm = event.currentTarget;
+      const formData = new FormData(myForm);
+
+      // Force l'ajout du nom du formulaire
+      formData.set("form-name", "contact-form-main");
+
+      // Ajout d'un timestamp pour éviter le "spam deduplication" de Netlify lors des tests
+      formData.set("submission_timestamp", Date.now().toString());
+
+      const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         // @ts-ignore
@@ -35,7 +41,7 @@ export default function ContactPage() {
       if (response.ok) {
         router.push("/merci");
       } else {
-        const result = await response.json();
+        const result = await response.json().catch(() => ({}));
         setErrorMessage(result.error || "Une erreur est survenue.");
       }
     } catch (error) {
@@ -62,7 +68,12 @@ export default function ContactPage() {
           <div className="md:col-span-2 max-w-2xl">
             <h2 className="text-2xl font-semibold mb-4">Contactez-nous</h2>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form
+              name="contact-form-main"
+              method="POST"
+              onSubmit={handleSubmit}
+              className="space-y-4"
+            >
               <input type="hidden" name="form-name" value="contact-form-main" />
               <p className="hidden">
                 <label>
