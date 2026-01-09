@@ -40,9 +40,9 @@
     <p>Version sans honeypot ni redirection personnalisée.</p>
 
     <!-- Formulaire ULTRA SIMPLIFIÉ pour diagnostic -->
-    <!-- Pas de hidden bot-field, redirection vers /merci activée -->
-    <form name="contact-final" data-netlify="true" action="/merci" method="POST">
-        <input type="hidden" name="form-name" value="contact-final" />
+    <!-- Pas de hidden bot-field, Pas d'action (API pure pour fetch) -->
+    <form name="contact-live" data-netlify="true" method="POST">
+        <input type="hidden" name="form-name" value="contact-live" />
 
         <div>
             <label>Nom</label>

@@ -65,7 +65,7 @@ export default function ContactPage() {
               onSubmit={handleSubmit}
               className="space-y-4"
             >
-              <input type="hidden" name="form-name" value="contact-final" />
+              <input type="hidden" name="form-name" value="contact-live" />
 
               {errorMessage && (
                 <div className="bg-red-50 text-red-600 p-3 rounded">
