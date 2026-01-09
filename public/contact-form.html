@@ -36,16 +36,13 @@
 </head>
 
 <body>
-    <h1>Test Formulaire HTML Pur</h1>
-    <p>Ce formulaire est une page statique pure, sans React ni Next.js.</p>
+    <h1>Test Formulaire HTML Pur (Simplifié)</h1>
+    <p>Version sans honeypot ni redirection personnalisée.</p>
 
-    <!-- Formulaire visible pour le test -->
-    <form name="contact-form-main" data-netlify="true" netlify-honeypot="bot-field" action="/merci" method="POST">
+    <!-- Formulaire ULTRA SIMPLIFIÉ pour diagnostic -->
+    <!-- Pas de hidden bot-field, pas d'action (doit aller vers page succès Netlify par défaut) -->
+    <form name="contact-form-main" data-netlify="true" method="POST">
         <input type="hidden" name="form-name" value="contact-form-main" />
-
-        <div style="display:none">
-            <label>Ne pas remplir: <input name="bot-field" /></label>
-        </div>
 
         <div>
             <label>Nom</label>
@@ -64,15 +61,15 @@
 
         <div>
             <label>Sujet</label>
-            <input type="text" name="subject" value="TEST STATIC HTML" />
+            <input type="text" name="subject" value="TEST DIAGNOSTIC" />
         </div>
 
         <div>
             <label>Message</label>
-            <textarea name="message">Test depuis la page statique</textarea>
+            <textarea name="message">Test diagnostic sans honeypot</textarea>
         </div>
 
-        <button type="submit">Envoyer le Test</button>
+        <button type="submit">Envoyer le Test Diagnostique</button>
     </form>
 </body>
 
