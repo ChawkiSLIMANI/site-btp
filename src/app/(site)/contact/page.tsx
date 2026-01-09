@@ -1,10 +1,48 @@
+"use client";
+
 import { SITE } from "@/lib/constants";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function ContactPage() {
+  const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const instagram =
     (SITE.socials ?? []).find(
       (s) => s.label.toLowerCase() === "instagram"
     )?.url || "";
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    const myForm = event.currentTarget;
+    const formData = new FormData(myForm);
+
+    try {
+      // Stratégie hybride : on POST vers le fichier statique pour garantir l'interception Netlify
+      // tout en gardant le contrôle JS pour la redirection.
+      const response = await fetch("/contact-form.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        // @ts-ignore
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (response.ok) {
+        router.push("/merci");
+      } else {
+        setErrorMessage("Une erreur est survenue.");
+      }
+    } catch (error) {
+      setErrorMessage("Impossible d'envoyer le message.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <main className="py-16">
@@ -24,13 +62,16 @@ export default function ContactPage() {
             <h2 className="text-2xl font-semibold mb-4">Contactez-nous</h2>
 
             <form
-              name="contact-final"
-              method="POST"
-              action="/merci"
-              data-netlify="true"
+              onSubmit={handleSubmit}
               className="space-y-4"
             >
               <input type="hidden" name="form-name" value="contact-final" />
+
+              {errorMessage && (
+                <div className="bg-red-50 text-red-600 p-3 rounded">
+                  {errorMessage}
+                </div>
+              )}
 
               <div>
                 <label className="block mb-1">Nom *</label>
