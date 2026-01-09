@@ -62,6 +62,12 @@ export default function ContactPage() {
             <h2 className="text-2xl font-semibold mb-4">Contactez-nous</h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              <input type="hidden" name="form-name" value="contact-form-main" />
+              <p className="hidden">
+                <label>
+                  Ne pas remplir: <input name="bot-field" />
+                </label>
+              </p>
 
               {errorMessage && (
                 <div className="bg-red-50 text-red-600 p-3 rounded">

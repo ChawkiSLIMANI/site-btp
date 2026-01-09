@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form Definition</title>
+</head>
+
+<body>
+    <!-- 
+    Stratégie "Static Form" pour Netlify.
+    Nom du formulaire : "contact-form-main" pour redémarrer sur une base propre.
+  -->
+    <form name="contact-form-main" data-netlify="true" netlify-honeypot="bot-field" action="/merci" hidden>
+        <input type="hidden" name="form-name" value="contact-form-main" />
+        <input name="bot-field" />
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="tel" name="phone" />
+        <input type="text" name="subject" />
+        <textarea name="message"></textarea>
+    </form>
+</body>
+
+</html>
