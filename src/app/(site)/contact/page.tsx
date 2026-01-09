@@ -1,11 +1,56 @@
+"use client";
+
 import { SITE } from "@/lib/constants";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 
 export default function ContactPage() {
+  const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   // On récupère (si présent) uniquement le lien Instagram depuis les constantes
   const instagram =
     (SITE.socials ?? []).find(
       (s) => s.label.toLowerCase() === "instagram"
     )?.url || "";
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    const formData = new FormData(event.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        router.push("/merci");
+      } else {
+        const result = await response.json();
+        setErrorMessage(result.error || "Une erreur est survenue.");
+      }
+    } catch (error) {
+      setErrorMessage("Une erreur est survenue lors de l'envoi.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
 
   return (
     <main className="py-16">
@@ -20,24 +65,17 @@ export default function ContactPage() {
         </section>
 
         <div className="grid gap-10 md:grid-cols-3">
-          {/* ===== Colonne gauche : FORMULAIRE (Netlify) ===== */}
+          {/* ===== Colonne gauche : FORMULAIRE ===== */}
           <div className="md:col-span-2 max-w-2xl">
             <h2 className="text-2xl font-semibold mb-4">Contactez-nous</h2>
 
-            <form
-              name="contact"
-              method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              action="/merci"
-              className="space-y-4"
-            >
-              <input type="hidden" name="form-name" value="contact" />
-              <p className="hidden">
-                <label>
-                  Ne pas remplir: <input name="bot-field" />
-                </label>
-              </p>
+            <form onSubmit={handleSubmit} className="space-y-4">
+
+              {errorMessage && (
+                <div className="bg-red-50 text-red-600 p-3 rounded">
+                  {errorMessage}
+                </div>
+              )}
 
               <div>
                 <label className="block mb-1">Nom *</label>
@@ -101,9 +139,10 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                className="bg-cyan-700 text-white px-6 py-2 rounded"
+                disabled={isSubmitting}
+                className="bg-cyan-700 text-white px-6 py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Envoyer
+                {isSubmitting ? "Envoi en cours..." : "Envoyer"}
               </button>
             </form>
           </div>
