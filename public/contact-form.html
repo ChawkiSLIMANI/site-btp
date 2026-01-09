@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form Definition (Coaching)</title>
+</head>
+
+<body>
+    <!-- 
+      Ce fichier sert de point d'entrée pour le formulaire Netlify "contact-coaching-live".
+      Il est utilisé par le composant React via fetch().
+      Ne pas supprimer ou renommer sans mettre à jour src/components/home/Contact.tsx
+    -->
+    <form name="contact-coaching-live" data-netlify="true" method="POST" hidden>
+        <input type="hidden" name="form-name" value="contact-coaching-live" />
+
+        <div>
+            <label>Nom <input type="text" name="name" /></label>
+        </div>
+        <div>
+            <label>Email <input type="email" name="email" /></label>
+        </div>
+        <div>
+            <label>Message <textarea name="message"></textarea></label>
+        </div>
+    </form>
+</body>
+
+</html>
