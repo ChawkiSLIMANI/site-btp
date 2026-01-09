@@ -36,6 +36,7 @@ export default function ContactPage() {
               name="contact-form-main"
               method="POST"
               action="/merci"
+              data-netlify="true"
               className="space-y-4"
             >
               <input type="hidden" name="form-name" value="contact-form-main" />
