@@ -24,7 +24,8 @@ export default function ContactPage() {
     const formData = new FormData(event.currentTarget);
 
     try {
-      const response = await fetch("/", {
+      // On poste vers le fichier statique pour garantir que Netlify intercepte bien la donnée
+      const response = await fetch("/contact-form.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         // @ts-ignore
