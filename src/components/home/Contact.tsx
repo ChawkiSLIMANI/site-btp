@@ -13,6 +13,10 @@ export function Contact() {
 
         const formData = new FormData(e.currentTarget)
 
+        // Ajout dynamique du sujet pour l'email
+        const name = formData.get('name') as string
+        formData.append('subject', `Nouveau contact Coaching : ${name}`)
+
         try {
             const response = await fetch('/contact-form.html', {
                 method: 'POST',
@@ -21,13 +25,17 @@ export function Contact() {
                 body: new URLSearchParams(formData).toString(),
             })
 
+            console.log("Netlify Response:", response.status, response.statusText);
+
             if (response.ok) {
                 setStatus('success')
                 e.currentTarget.reset()
             } else {
+                console.error("Submission failed with status:", response.status);
                 setStatus('error')
             }
         } catch (error) {
+            console.error("Submission network error:", error);
             setStatus('error')
         } finally {
             setIsSubmitting(false)
