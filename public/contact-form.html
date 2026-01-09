@@ -4,72 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Formulaire Netlify</title>
-    <style>
-        body {
-            font-family: system-ui, sans-serif;
-            padding: 2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        form {
-            display: grid;
-            gap: 1rem;
-        }
-
-        input,
-        textarea {
-            padding: 0.5rem;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        button {
-            padding: 0.75rem;
-            background: #0070f3;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+    <title>Contact Form Definition</title>
 </head>
 
 <body>
-    <h1>Test Formulaire HTML Pur (Simplifié)</h1>
-    <p>Version sans honeypot ni redirection personnalisée.</p>
-
-    <!-- Formulaire ULTRA SIMPLIFIÉ pour diagnostic -->
-    <!-- Pas de hidden bot-field, Pas d'action (API pure pour fetch) -->
-    <form name="contact-live" data-netlify="true" method="POST">
+    <!-- 
+      Ce fichier sert de point d'entrée pour le formulaire Netlify "contact-live".
+      Il est utilisé par le composant React via fetch().
+      Ne pas supprimer ou renommer sans mettre à jour src/app/(site)/contact/page.tsx
+    -->
+    <form name="contact-live" data-netlify="true" method="POST" hidden>
         <input type="hidden" name="form-name" value="contact-live" />
 
         <div>
-            <label>Nom</label>
-            <input type="text" name="name" required placeholder="Test static" />
+            <label>Nom <input type="text" name="name" /></label>
         </div>
-
         <div>
-            <label>Email</label>
-            <input type="email" name="email" required placeholder="test@test.com" />
+            <label>Email <input type="email" name="email" /></label>
         </div>
-
         <div>
-            <label>Téléphone</label>
-            <input type="tel" name="phone" />
+            <label>Téléphone <input type="tel" name="phone" /></label>
         </div>
-
         <div>
-            <label>Sujet</label>
-            <input type="text" name="subject" value="TEST DIAGNOSTIC" />
+            <label>Sujet <input type="text" name="subject" /></label>
         </div>
-
         <div>
-            <label>Message</label>
-            <textarea name="message">Test diagnostic sans honeypot</textarea>
+            <label>Message <textarea name="message"></textarea></label>
         </div>
-
-        <button type="submit">Envoyer le Test Diagnostique</button>
     </form>
 </body>
 
