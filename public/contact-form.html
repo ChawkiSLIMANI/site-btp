@@ -4,22 +4,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form Definition</title>
+    <title>Test Formulaire Netlify</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        input,
+        textarea {
+            padding: 0.5rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 0.75rem;
+            background: #0070f3;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- 
-    Stratégie "Static Form" pour Netlify.
-    Nom du formulaire : "contact-form-main" pour redémarrer sur une base propre.
-  -->
-    <form name="contact-form-main" data-netlify="true" netlify-honeypot="bot-field" action="/merci" hidden>
+    <h1>Test Formulaire HTML Pur</h1>
+    <p>Ce formulaire est une page statique pure, sans React ni Next.js.</p>
+
+    <!-- Formulaire visible pour le test -->
+    <form name="contact-form-main" data-netlify="true" netlify-honeypot="bot-field" action="/merci" method="POST">
         <input type="hidden" name="form-name" value="contact-form-main" />
-        <input name="bot-field" />
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <input type="tel" name="phone" />
-        <input type="text" name="subject" />
-        <textarea name="message"></textarea>
+
+        <div style="display:none">
+            <label>Ne pas remplir: <input name="bot-field" /></label>
+        </div>
+
+        <div>
+            <label>Nom</label>
+            <input type="text" name="name" required placeholder="Test static" />
+        </div>
+
+        <div>
+            <label>Email</label>
+            <input type="email" name="email" required placeholder="test@test.com" />
+        </div>
+
+        <div>
+            <label>Téléphone</label>
+            <input type="tel" name="phone" />
+        </div>
+
+        <div>
+            <label>Sujet</label>
+            <input type="text" name="subject" value="TEST STATIC HTML" />
+        </div>
+
+        <div>
+            <label>Message</label>
+            <textarea name="message">Test depuis la page statique</textarea>
+        </div>
+
+        <button type="submit">Envoyer le Test</button>
     </form>
 </body>
 
