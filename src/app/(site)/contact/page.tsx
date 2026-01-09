@@ -39,11 +39,6 @@ export default function ContactPage() {
               className="space-y-4"
             >
               <input type="hidden" name="form-name" value="contact-form-main" />
-              <p className="hidden">
-                <label>
-                  Ne pas remplir: <input name="bot-field" />
-                </label>
-              </p>
 
               <div>
                 <label className="block mb-1">Nom *</label>
