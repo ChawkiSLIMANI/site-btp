@@ -10,46 +10,10 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  // On récupère (si présent) uniquement le lien Instagram depuis les constantes
   const instagram =
     (SITE.socials ?? []).find(
       (s) => s.label.toLowerCase() === "instagram"
     )?.url || "";
-
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setIsSubmitting(true);
-    setErrorMessage("");
-
-    try {
-      const myForm = event.currentTarget;
-      const formData = new FormData(myForm);
-
-      // Force l'ajout du nom du formulaire
-      formData.set("form-name", "contact-form-main");
-
-      // Ajout d'un timestamp pour éviter le "spam deduplication" de Netlify lors des tests
-      formData.set("submission_timestamp", Date.now().toString());
-
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        // @ts-ignore
-        body: new URLSearchParams(formData).toString(),
-      });
-
-      if (response.ok) {
-        router.push("/merci");
-      } else {
-        const result = await response.json().catch(() => ({}));
-        setErrorMessage(result.error || "Une erreur est survenue.");
-      }
-    } catch (error) {
-      setErrorMessage("Une erreur est survenue lors de l'envoi.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
 
   return (
     <main className="py-16">
@@ -71,7 +35,7 @@ export default function ContactPage() {
             <form
               name="contact-form-main"
               method="POST"
-              onSubmit={handleSubmit}
+              action="/merci"
               className="space-y-4"
             >
               <input type="hidden" name="form-name" value="contact-form-main" />
@@ -80,12 +44,6 @@ export default function ContactPage() {
                   Ne pas remplir: <input name="bot-field" />
                 </label>
               </p>
-
-              {errorMessage && (
-                <div className="bg-red-50 text-red-600 p-3 rounded">
-                  {errorMessage}
-                </div>
-              )}
 
               <div>
                 <label className="block mb-1">Nom *</label>
@@ -149,10 +107,9 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="bg-cyan-700 text-white px-6 py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-cyan-700 text-white px-6 py-2 rounded"
               >
-                {isSubmitting ? "Envoi en cours..." : "Envoyer"}
+                Envoyer
               </button>
             </form>
           </div>
