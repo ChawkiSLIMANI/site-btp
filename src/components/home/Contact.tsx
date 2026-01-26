@@ -75,59 +75,66 @@ export function Contact() {
                         </div>
 
                         {/* Simple Form */}
-                        <form onSubmit={handleSubmit} className="space-y-4">
-                            <input type="hidden" name="form-name" value="contact-coaching-live" />
+                        <div className="flex flex-col justify-center space-y-6">
+                            <div className="text-center">
+                                <h3 className="mb-4 text-xl font-bold text-white">
+                                    Pour une collaboration ou un partenariat :
+                                </h3>
+                            </div>
+                            <form onSubmit={handleSubmit} className="space-y-4">
+                                <input type="hidden" name="form-name" value="contact-coaching-live" />
 
-                            {status === 'success' && (
-                                <div className="rounded-lg bg-green-500/20 p-4 text-center text-green-200 border border-green-500/30">
-                                    Message envoyé avec succès ! Je vous répondrai très vite.
+                                {status === 'success' && (
+                                    <div className="rounded-lg bg-green-500/20 p-4 text-center text-green-200 border border-green-500/30">
+                                        Message envoyé avec succès ! Je vous répondrai très vite.
+                                    </div>
+                                )}
+
+                                {status === 'error' && (
+                                    <div className="rounded-lg bg-red-500/20 p-4 text-center text-red-200 border border-red-500/30">
+                                        Une erreur est survenue. Veuillez réessayer.
+                                    </div>
+                                )}
+
+                                <div>
+                                    <label className="mb-2 block text-sm font-medium text-gray-300">Nom</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        required
+                                        className="w-full rounded-lg border border-white/20 bg-white/10 p-3 text-white placeholder-gray-400 focus:border-[#D4AF37] focus:outline-none focus:ring-1 focus:ring-[#D4AF37]"
+                                        placeholder="Votre nom"
+                                    />
                                 </div>
-                            )}
-
-                            {status === 'error' && (
-                                <div className="rounded-lg bg-red-500/20 p-4 text-center text-red-200 border border-red-500/30">
-                                    Une erreur est survenue. Veuillez réessayer.
+                                <div>
+                                    <label className="mb-2 block text-sm font-medium text-gray-300">Email</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        required
+                                        className="w-full rounded-lg border border-white/20 bg-white/10 p-3 text-white placeholder-gray-400 focus:border-[#D4AF37] focus:outline-none focus:ring-1 focus:ring-[#D4AF37]"
+                                        placeholder="votre@email.com"
+                                    />
                                 </div>
-                            )}
-
-                            <div>
-                                <label className="mb-2 block text-sm font-medium text-gray-300">Nom</label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    required
-                                    className="w-full rounded-lg border border-white/20 bg-white/10 p-3 text-white placeholder-gray-400 focus:border-[#D4AF37] focus:outline-none focus:ring-1 focus:ring-[#D4AF37]"
-                                    placeholder="Votre nom"
-                                />
-                            </div>
-                            <div>
-                                <label className="mb-2 block text-sm font-medium text-gray-300">Email</label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    required
-                                    className="w-full rounded-lg border border-white/20 bg-white/10 p-3 text-white placeholder-gray-400 focus:border-[#D4AF37] focus:outline-none focus:ring-1 focus:ring-[#D4AF37]"
-                                    placeholder="votre@email.com"
-                                />
-                            </div>
-                            <div>
-                                <label className="mb-2 block text-sm font-medium text-gray-300">Message</label>
-                                <textarea
-                                    name="message"
-                                    required
-                                    rows={4}
-                                    className="w-full rounded-lg border border-white/20 bg-white/10 p-3 text-white placeholder-gray-400 focus:border-[#D4AF37] focus:outline-none focus:ring-1 focus:ring-[#D4AF37]"
-                                    placeholder="Comment puis-je vous aider ?"
-                                />
-                            </div>
-                            <button
-                                type="submit"
-                                disabled={isSubmitting}
-                                className="block w-full rounded-lg bg-[#D4AF37] py-4 text-lg font-bold text-black shadow-lg transition-transform hover:scale-[1.02] hover:bg-[#FCD34D] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] disabled:opacity-50 disabled:cursor-not-allowed"
-                            >
-                                {isSubmitting ? 'Envoi en cours...' : 'Envoyer ma demande'}
-                            </button>
-                        </form>
+                                <div>
+                                    <label className="mb-2 block text-sm font-medium text-gray-300">Message</label>
+                                    <textarea
+                                        name="message"
+                                        required
+                                        rows={4}
+                                        className="w-full rounded-lg border border-white/20 bg-white/10 p-3 text-white placeholder-gray-400 focus:border-[#D4AF37] focus:outline-none focus:ring-1 focus:ring-[#D4AF37]"
+                                        placeholder="Comment puis-je vous aider ?"
+                                    />
+                                </div>
+                                <button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    className="block w-full rounded-lg bg-[#D4AF37] py-4 text-lg font-bold text-black shadow-lg transition-transform hover:scale-[1.02] hover:bg-[#FCD34D] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    {isSubmitting ? 'Envoi en cours...' : 'Envoyer ma demande'}
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
