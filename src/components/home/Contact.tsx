@@ -1,10 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { PopupModal } from 'react-calendly'
 
 export function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
+    const [isCalendlyOpen, setIsCalendlyOpen] = useState(false)
+    const [rootElement, setRootElement] = useState<HTMLElement | null>(null)
+
+    useEffect(() => {
+        // Wait for mount to access document
+        setRootElement(document.body)
+    }, [])
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -60,15 +68,21 @@ export function Contact() {
                                 <h3 className="mb-4 text-xl font-bold text-white">
                                     Pour prendre rendez-vous :
                                 </h3>
-                                <a
-                                    href="https://calendly.com/aksoucoaching"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <button
+                                    onClick={() => setIsCalendlyOpen(true)}
                                     className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#D4AF37] p-4 text-lg font-bold text-black transition-all hover:bg-[#FCD34D] shadow-[0_0_15px_rgba(212,175,55,0.3)]"
                                 >
                                     <span>📅</span>
                                     <span>Réserver sur Calendly</span>
-                                </a>
+                                </button>
+                                {rootElement && (
+                                    <PopupModal
+                                        url="https://calendly.com/aksoucoaching"
+                                        onModalClose={() => setIsCalendlyOpen(false)}
+                                        open={isCalendlyOpen}
+                                        rootElement={rootElement}
+                                    />
+                                )}
                             </div>
 
 
