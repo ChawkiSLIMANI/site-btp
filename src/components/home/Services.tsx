@@ -1,6 +1,16 @@
 'use client'
 
+import { useState, useEffect } from 'react'
+import { PopupModal } from 'react-calendly'
+
 export function Services() {
+    const [isCalendlyOpen, setIsCalendlyOpen] = useState(false)
+    const [rootElement, setRootElement] = useState<HTMLElement | null>(null)
+
+    useEffect(() => {
+        setRootElement(document.body)
+    }, [])
+
     const offers = [
         {
             title: "Offre Spotlight",
@@ -41,15 +51,21 @@ export function Services() {
                         <p className="text-sm italic text-gray-400">
                             * Sans engagement. Donne accès ensuite aux formules Spotlight ou Transformation.
                         </p>
-                        <a
-                            href="https://calendly.com/aksoucoaching"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <button
+                            onClick={() => setIsCalendlyOpen(true)}
                             className="inline-flex items-center gap-3 rounded-xl bg-[#D4AF37] px-8 py-4 text-lg font-bold text-black transition-all hover:bg-[#FCD34D] hover:scale-105 shadow-[0_0_15px_rgba(212,175,55,0.3)]"
                         >
                             <span>📅</span>
                             <span>Réserver mon appel</span>
-                        </a>
+                        </button>
+                        {rootElement && (
+                            <PopupModal
+                                url="https://calendly.com/aksoucoaching"
+                                onModalClose={() => setIsCalendlyOpen(false)}
+                                open={isCalendlyOpen}
+                                rootElement={rootElement}
+                            />
+                        )}
                     </div>
                 </div>
 
