@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { PopupModal } from 'react-calendly'
+import Image from 'next/image'
 
 export function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -62,30 +63,39 @@ export function Contact() {
                     </p>
 
                     <div className="grid gap-12 md:grid-cols-2">
-                        {/* Calendly / Direct Contact */}
-                        <div className="flex flex-col justify-center space-y-6">
-                            <div className="text-center">
-                                <h3 className="mb-4 text-xl font-bold text-white">
-                                    Pour prendre rendez-vous :
-                                </h3>
-                                <button
-                                    onClick={() => setIsCalendlyOpen(true)}
-                                    className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#D4AF37] p-4 text-lg font-bold text-black transition-all hover:bg-[#FCD34D] shadow-[0_0_15px_rgba(212,175,55,0.3)]"
-                                >
-                                    <span>📅</span>
-                                    <span>Réserver sur Calendly</span>
-                                </button>
-                                {rootElement && (
-                                    <PopupModal
-                                        url="https://calendly.com/aksoucoaching"
-                                        onModalClose={() => setIsCalendlyOpen(false)}
-                                        open={isCalendlyOpen}
-                                        rootElement={rootElement}
-                                    />
-                                )}
+                        {/* Image + Calendly / Direct Contact */}
+                        <div className="flex flex-col space-y-8">
+                            <div className="relative aspect-[3/4] w-full max-w-xs mx-auto overflow-hidden rounded-xl border border-white/10 shadow-lg">
+                                <Image
+                                    src="/images/P1349374.JPG"
+                                    alt="Contacter Hassan"
+                                    fill
+                                    className="object-cover"
+                                    sizes="(max-width: 768px) 100vw, 500px"
+                                />
                             </div>
-
-
+                            <div className="flex flex-col justify-center space-y-6">
+                                <div className="text-center">
+                                    <h3 className="mb-4 text-xl font-bold text-white">
+                                        Pour prendre rendez-vous :
+                                    </h3>
+                                    <button
+                                        onClick={() => setIsCalendlyOpen(true)}
+                                        className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#D4AF37] p-4 text-lg font-bold text-black transition-all hover:bg-[#FCD34D] shadow-[0_0_15px_rgba(212,175,55,0.3)]"
+                                    >
+                                        <span>📅</span>
+                                        <span>Réserver sur Calendly</span>
+                                    </button>
+                                    {rootElement && (
+                                        <PopupModal
+                                            url="https://calendly.com/aksoucoaching"
+                                            onModalClose={() => setIsCalendlyOpen(false)}
+                                            open={isCalendlyOpen}
+                                            rootElement={rootElement}
+                                        />
+                                    )}
+                                </div>
+                            </div>
                         </div>
 
                         {/* Simple Form */}
