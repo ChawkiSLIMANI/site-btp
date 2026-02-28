@@ -40,7 +40,7 @@ export const SITE_CONFIG = {
     name: "Aksou Coaching",
     baseline: "Coach des leaders sous pression",
     email: "contact@aksou-coaching.com",
-    address: "Paris",
+    address: "25 rue de l'abbé grégoire\n75006 Paris",
     hours: "Lun–Ven : 9h–18h",
     areas: ["Paris", "Île-de-France"],
     socials: [

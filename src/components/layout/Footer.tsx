@@ -20,7 +20,7 @@ export function Footer() {
             <img src="/images/placeholders/logo-AC-1.jpeg" alt="Aksou Coaching" className="h-full w-full object-contain object-left" />
           </div>
           <p className="font-semibold text-brand">{SITE.name}</p>
-          <p className="opacity-80">
+          <p className="opacity-80 whitespace-pre-line">
             {SITE.address}
           </p>
 
