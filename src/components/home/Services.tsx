@@ -20,20 +20,20 @@ export function Services() {
                 </h2>
 
                 {/* Étape 1 : Discovery Call */}
-                <div className="mx-auto mb-16 max-w-4xl text-center">
+                <div className="mx-auto mb-16 max-w-4xl text-left md:text-center">
                     <div className="mb-8 rounded-2xl border-2 border-brand/20 bg-white/5 p-8 backdrop-blur-sm md:p-10 shadow-xl">
                         <span className="mb-4 inline-block rounded-full bg-brand/10 px-4 py-2 text-sm font-bold uppercase tracking-wider text-brand">
                             Étape 1 : Préalable indispensable
                         </span>
                         <h3 className="mb-4 text-2xl font-bold font-serif text-white md:text-3xl">
-                            Entretien Découverte (30 min) - Offert
+                            Point ZÉRO (30 à 40 min) - 50€ HT
                         </h3>
-                        <p className="mb-6 text-lg text-gray-300 leading-relaxed">
-                            Avant tout accompagnement, nous échangeons lors d'un appel téléphonique pour valider notre "fit".
-                            C'est le moment de vérifier si je suis le bon coach pour vous, et si le feeling passe entre nous.
-                        </p>
-                        <p className="mb-8 text-sm italic text-gray-400">
-                            * Sans engagement. Donne accès ensuite aux formules Impact ou Leadership sous Pression.
+                        <div className="mb-6 text-lg text-gray-300 leading-relaxed space-y-4">
+                            <p>Avant tout engagement, je vous propose un entretien confidentiel de 30 à 40 minutes.</p>
+                            <p>Cet échange est un temps d'analyse et de clarification. Nous explorons votre contexte, vos enjeux actuels, vos zones de tension et vos objectifs réels. L'objectif est double : déterminer si le coaching est la réponse la plus pertinente à votre situation, et vérifier l'alignement entre votre besoin et mon approche.</p>
+                        </div>
+                        <p className="mb-8 font-serif text-lg italic text-brand">
+                            Parce qu'un accompagnement de haut niveau commence par une décision éclairée.
                         </p>
                         <button
                             onClick={() => setIsCalendlyOpen(true)}

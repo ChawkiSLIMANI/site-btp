@@ -95,6 +95,15 @@ export function Contact() {
                                         />
                                     )}
                                 </div>
+                                <div className="text-center pt-4 border-t border-white/10">
+                                    <h3 className="mb-2 text-xl font-bold text-white">
+                                        Localisation :
+                                    </h3>
+                                    <p className="text-gray-300">
+                                        25 rue de l'abbé grégoire<br />
+                                        75006 Paris
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
