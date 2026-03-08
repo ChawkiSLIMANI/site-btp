@@ -94,7 +94,7 @@ export function About() {
                                 <div className="mt-8 border-t border-white/10 pt-6">
                                     <p className="font-bold text-white text-xl mb-3">Mon objectif :</p>
                                     <p className="italic text-gray-200">
-                                        "Vous aider à garder la tête froide quand tout s'accélère, transformer l'urgence en opportunité et rester aligné avec votre vision — sans vous perdre dans le chaos du quotidien."
+                                        "Vous aidez à garder la tête froide quand tout s'accélère, transformer l'urgence en opportunité et rester aligné avec votre vision — sans vous perdre dans le chaos du quotidien."
                                     </p>
                                 </div>
                             </div>

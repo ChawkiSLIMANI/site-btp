@@ -45,7 +45,7 @@ export const SITE_CONFIG = {
     areas: ["Paris", "Île-de-France"],
     socials: [
       { label: "LinkedIn", url: "https://linkedin.com/" },
-      { label: "Instagram", url: "https://instagram.com/" },
+      { label: "Instagram", url: "https://www.instagram.com/aksou_coaching?igsh=YWFzMnR3MnZ1YXly" },
       { label: "Facebook", url: "https://facebook.com/" }
     ]
   } as SiteSettings,
